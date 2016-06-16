@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('deseo/listar', 'DeseoController@listar');
+
+Route::get('inmueble/mostraragregar', 'InmuebleController@mostrarAgregar');
+
+Route::get('/foo', function () {
+    return 'Hello World';
+});
