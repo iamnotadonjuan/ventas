@@ -12,13 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
 
 Route::get('deseo/listar', 'DeseoController@listar');
 
-Route::get('inmueble/mostraragregar', 'InmuebleController@mostrarAgregar');
-
-Route::get('/foo', function () {
-    return 'Hello World';
-});
+Route::get('inmueble/create', 'InmuebleController@create');
+Route::post('inmueble/store', 'InmuebleController@store');

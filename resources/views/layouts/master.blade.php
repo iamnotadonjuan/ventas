@@ -2,20 +2,17 @@
 <html lang="es">
     <head>
         <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        
+        <title>Arrendamos</title>
+        
         <link rel="apple-touch-icon" sizes="76x76" href="<?php echo asset('/img/apple-icon.png') ?>">
         <link rel="icon" type="image/png" sizes="96x96" href="<?php echo asset('img/favicon.png') ?>">
-
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <!--    <title>App Name - @yield('title')</title>-->
-        <title>Arrendamos</title>
-        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <link href="<?php echo asset('css/bootstrap.css') ?>" rel="stylesheet" />
         <link href="<?php echo asset('css/gaia.css') ?>" rel="stylesheet"/>
-
-        <!--     Fonts and icons     -->
         <link href='https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600' rel='stylesheet' type='text/css'>
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-        <!--<link href="assets/css/fonts/pe-icon-7-stroke.css" rel="stylesheet">-->
         <link href="<?php echo asset('/css/fonts/pe-icon-7-stroke.css') ?>" rel="stylesheet">
     </head>
 
@@ -282,7 +279,6 @@
 
     <div class="row">
                     <div class="col-md-3">
-
                         <div class="info-icon">
                         <h4>Arriendo</h4>
                             <div class="img">
@@ -295,8 +291,6 @@
                             <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</a><br/><br/>
 
                             <a href="#" class="btn btn-danger btn-fill">Ver Más</a>
-
-
                         </div>
                     </div>
 
@@ -319,10 +313,7 @@
                         </div>
                     </div>
 
-
-
-                <div class="col-md-3">
-
+                    <div class="col-md-3">
                         <div class="info-icon">
                         <h4>Arriendo</h4>
                             <div class="img">
@@ -335,13 +326,10 @@
                             <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</a><br/><br/>
 
                             <a href="#" class="btn btn-danger btn-fill">Ver Más</a>
-
-
                         </div>
                     </div>
 
-                     <div class="col-md-3">
-
+                    <div class="col-md-3">
                         <div class="info-icon">
                         <h4>Arriendo</h4>
                             <div class="img">
@@ -359,8 +347,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
 
@@ -434,10 +420,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
 
         <footer class="footer footer-big footer-color-black" data-color="black">
             <div class="container">
@@ -529,13 +511,6 @@
                 </div>
             </div>
         </footer>
-        @section('sidebar')
-            This is the master sidebar.
-        @show
-
-        <div class="container">
-            @yield('content')
-        </div>
         
         <!--   core js files    -->
         <script src="<?php echo asset('js/jquery.min.js') ?>" type="text/javascript"></script>
