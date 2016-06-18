@@ -1,0 +1,15 @@
+#btn
+{
+  margin: auto;
+}
+
+#box-register
+{
+  text-align: center;
+}
+
+#btn-register
+{
+  background-color: red;
+  color: white;
+}

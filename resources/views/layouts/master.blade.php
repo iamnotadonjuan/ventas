@@ -14,6 +14,7 @@
         <link href='https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600' rel='stylesheet' type='text/css'>
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link href="<?php echo asset('/css/fonts/pe-icon-7-stroke.css') ?>" rel="stylesheet">
+        <link rel="stylesheet" href="<?php echo asset('/css/arrendamos.css') ?>" media="screen" title="no title" charset="utf-8">
     </head>
 
     <body>
@@ -70,20 +71,19 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             <h3 class="modal-title" id="myModalLabel">Registrate</h3>
           </div>
-          <div class="modal-body">
 
+    <div class="modal-body">
     <form id='form-register' method='post'>
       <input type="hidden" name="_token" value="{{csrf_token()}}" id='token'>
       <div class="form-group">
         <input id='name' name='name' type="text" class="form-control"  placeholder="Digite su Nombre">
         <div id='name-msj' class="text-danger"></div>
       </div>
-      </div>
       <div class="form-group">
         <input id='email' name='email' type="email" class="form-control"  placeholder="Digite su correo">
         <div id='email-msj' class="text-danger"></div>
       </div>
-       <div class="form-group">
+      <div class="form-group">
         <input type="password" id='password' name='password' class="form-control"  placeholder="Digite su Clave">
         <div id='password-msj' class="text-danger"></div>
       </div>
@@ -96,13 +96,12 @@
         <div id='phone-msj' class="text-danger"></div>
       </div>
       <div id='register-win' class="text-success"></div>
+      </div>
       </form>
-
-
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-danger btn-fill" onclick="register();">Registrarse</button>
+          <div id='box-register' class="modal-footer">
+            <button id='btn-register' type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button id='btn' type="button" class="btn btn-danger btn-fill" onclick="register();">Registrarse</button>
           </div>
         </div>
       </div>
@@ -131,9 +130,9 @@
 
 
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-danger btn-fill">Acceder</button>
+          <div id='box-register' class="modal-footer">
+            <button id='btn-register' type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button id='btn' type="button" class="btn btn-danger btn-fill">Acceder</button>
           </div>
         </div>
       </div>
