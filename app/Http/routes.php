@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('inicio');
 });
 
+//route register
+Route::post('register', 'Auth\AuthController@postRegister');
+
 Route::get('deseo/listar', 'DeseoController@listar');
 
 Route::get('inmueble/create', 'InmuebleController@create');

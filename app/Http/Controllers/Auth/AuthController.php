@@ -5,8 +5,11 @@ namespace Ventas\Http\Controllers\Auth;
 use Ventas\User;
 use Validator;
 use Ventas\Http\Controllers\Controller;
+use Ventas\Http\Requests\RegisterRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
@@ -40,33 +43,22 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
+    public function postRegister(RegisterRequest $request)
     {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
-        ]);
-    }
+      if($request->ajax())
+      {
+        $usuario = new User;
+        $usuario->usua_nomb = $request->Name;
+        $usuario->usua_emai = $request->Email;
+        $usuario->usua_clav = bcrypt($request->Password);
+        $usuario->usua_dire = $request->Address;
+        $usuario->usua_tele = $request->Phone;
+        $usuario->tius_iden = 2;
+        $usuario->save();
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+        return response()->json([
+          'Message' => 'Te registraste exitosamente'
         ]);
+      }
     }
 }

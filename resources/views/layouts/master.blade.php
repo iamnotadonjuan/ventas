@@ -4,9 +4,9 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-        
+
         <title>Arrendamos</title>
-        
+
         <link rel="apple-touch-icon" sizes="76x76" href="<?php echo asset('/img/apple-icon.png') ?>">
         <link rel="icon" type="image/png" sizes="96x96" href="<?php echo asset('img/favicon.png') ?>">
         <link href="<?php echo asset('css/bootstrap.css') ?>" rel="stylesheet" />
@@ -72,30 +72,37 @@
           </div>
           <div class="modal-body">
 
-    <form>
+    <form id='form-register' method='post'>
+      <input type="hidden" name="_token" value="{{csrf_token()}}" id='token'>
       <div class="form-group">
-        <input type="text" class="form-control"  placeholder="Digite su Nombre">
+        <input id='name' name='name' type="text" class="form-control"  placeholder="Digite su Nombre">
+        <div id='name-msj' class="text-danger"></div>
+      </div>
       </div>
       <div class="form-group">
-        <input type="email" class="form-control"  placeholder="Digite su correo">
+        <input id='email' name='email' type="email" class="form-control"  placeholder="Digite su correo">
+        <div id='email-msj' class="text-danger"></div>
       </div>
        <div class="form-group">
-        <input type="password" class="form-control"  placeholder="Digite su Clave">
+        <input type="password" id='password' name='password' class="form-control"  placeholder="Digite su Clave">
+        <div id='password-msj' class="text-danger"></div>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control"  placeholder="Digite su Dirección">
+        <input id='address' name='address' type="text" class="form-control"  placeholder="Digite su Dirección">
+        <div id='address-msj' class="text-danger"></div>
       </div>
       <div class="form-group">
-        <input type="text" class="form-control"  placeholder="Digite su Teléfono">
+        <input id='phone' name='phone' type="text" class="form-control"  placeholder="Digite su Teléfono">
+        <div id='phone-msj' class="text-danger"></div>
       </div>
-
+      <div id='register-win' class="text-success"></div>
       </form>
 
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-danger btn-fill">Registrarse</button>
+            <button type="button" class="btn btn-danger btn-fill" onclick="register();">Registrarse</button>
           </div>
         </div>
       </div>
@@ -231,7 +238,6 @@
                             <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</a><br/><br/>
 
                             <a href="#" class="btn btn-danger btn-fill">Ver Más</a>
-
 
                         </div>
                     </div>
@@ -511,7 +517,7 @@
                 </div>
             </div>
         </footer>
-        
+
         <!--   core js files    -->
         <script src="<?php echo asset('js/jquery.min.js') ?>" type="text/javascript"></script>
         <script src="<?php echo asset('js/bootstrap.js')?>" type="text/javascript"></script>
@@ -524,5 +530,11 @@
 
         <!--   file where we handle all the script from the Gaia - Bootstrap Template   -->
         <script type="text/javascript" src="<?php echo asset('js/gaia.js')?> "></script>
+
+        <!-- file where we handle consults in server by ajax -->
+        <script type="text/javascript" src='js/libreria.js'></script>
+        <script type="text/javascript">
+
+        </script>
     </body>
 </html>
