@@ -1,67 +1,47 @@
--- MySQL dump 10.13  Distrib 5.5.49, for debian-linux-gnu (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Host: localhost    Database: inmueble
--- ------------------------------------------------------
--- Server version	5.5.49-0ubuntu0.14.04.1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 21-06-2016 a las 22:21:26
+-- Versión del servidor: 10.1.9-MariaDB
+-- Versión de PHP: 5.5.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Current Database: `inmueble`
+-- Base de datos: `inmueble`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `inmueble` /*!40100 DEFAULT CHARACTER SET latin1 */;
-
-USE `inmueble`;
+-- --------------------------------------------------------
 
 --
--- Table structure for table `comentarios`
+-- Estructura de tabla para la tabla `comentarios`
 --
 
-DROP TABLE IF EXISTS `comentarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `comentarios` (
-  `come_iden` int(11) NOT NULL AUTO_INCREMENT,
+  `come_iden` int(11) NOT NULL,
   `usua_iden` int(11) NOT NULL,
   `inmu_iden` int(11) NOT NULL,
   `come_fech` date NOT NULL,
-  `come_come` text NOT NULL,
-  PRIMARY KEY (`come_iden`),
-  KEY `usua_iden` (`usua_iden`),
-  KEY `inmu_iden` (`inmu_iden`),
-  CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`usua_iden`) REFERENCES `usuarios` (`usua_iden`),
-  CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`inmu_iden`) REFERENCES `inmuebles` (`inmu_iden`)
+  `come_come` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla Comentarios';
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `comentarios`
+-- Estructura de tabla para la tabla `inmuebles`
 --
 
-LOCK TABLES `comentarios` WRITE;
-/*!40000 ALTER TABLE `comentarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `comentarios` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `inmuebles`
---
-
-DROP TABLE IF EXISTS `inmuebles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `inmuebles` (
-  `inmu_iden` int(11) NOT NULL AUTO_INCREMENT,
+  `inmu_iden` int(11) NOT NULL,
   `inmu_nomb` varchar(100) NOT NULL,
   `inmu_desc` text NOT NULL,
   `inmu_valo` double NOT NULL,
@@ -84,136 +64,189 @@ CREATE TABLE `inmuebles` (
   `inmu_prop` enum('Oferta','Demanda') NOT NULL,
   `inmu_feed` date NOT NULL,
   `inmu_fefi` date NOT NULL,
-  `inmu_est` enum('Activo','Desactivado') NOT NULL,
-  PRIMARY KEY (`inmu_iden`)
+  `inmu_est` enum('Activo','Desactivado') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla Inmuebles';
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `inmuebles`
+-- Estructura de tabla para la tabla `inmuebles_fotos`
 --
 
-LOCK TABLES `inmuebles` WRITE;
-/*!40000 ALTER TABLE `inmuebles` DISABLE KEYS */;
-/*!40000 ALTER TABLE `inmuebles` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `inmuebles_fotos`
---
-
-DROP TABLE IF EXISTS `inmuebles_fotos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `inmuebles_fotos` (
-  `info_iden` int(11) NOT NULL AUTO_INCREMENT,
+  `info_iden` int(11) NOT NULL,
   `inmu_iden` int(11) DEFAULT NULL,
-  `info_foto` varchar(255) NOT NULL,
-  PRIMARY KEY (`info_iden`),
-  KEY `info_inmu` (`inmu_iden`),
-  CONSTRAINT `info_inmu` FOREIGN KEY (`inmu_iden`) REFERENCES `inmuebles` (`inmu_iden`)
+  `info_foto` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `inmuebles_fotos`
+-- Estructura de tabla para la tabla `lista_deseos`
 --
 
-LOCK TABLES `inmuebles_fotos` WRITE;
-/*!40000 ALTER TABLE `inmuebles_fotos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `inmuebles_fotos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `lista_deseos`
---
-
-DROP TABLE IF EXISTS `lista_deseos`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lista_deseos` (
-  `lide_iden` int(11) NOT NULL AUTO_INCREMENT,
+  `lide_iden` int(11) NOT NULL,
   `inmu_iden` int(11) NOT NULL,
-  `usua_iden` int(11) NOT NULL,
-  PRIMARY KEY (`lide_iden`),
-  KEY `inmu_iden` (`inmu_iden`),
-  KEY `usua_iden` (`usua_iden`),
-  CONSTRAINT `lista_deseos_ibfk_1` FOREIGN KEY (`inmu_iden`) REFERENCES `inmuebles` (`inmu_iden`),
-  CONSTRAINT `lista_deseos_ibfk_2` FOREIGN KEY (`usua_iden`) REFERENCES `usuarios` (`usua_iden`)
+  `usua_iden` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla Lista de deseos';
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `lista_deseos`
+-- Estructura de tabla para la tabla `tipos_usuarios`
 --
 
-LOCK TABLES `lista_deseos` WRITE;
-/*!40000 ALTER TABLE `lista_deseos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `lista_deseos` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `tipos_usuarios`
---
-
-DROP TABLE IF EXISTS `tipos_usuarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tipos_usuarios` (
-  `tius_iden` int(11) NOT NULL AUTO_INCREMENT,
-  `tius_nomb` varchar(15) NOT NULL,
-  PRIMARY KEY (`tius_iden`)
+  `tius_iden` int(11) NOT NULL,
+  `tius_nomb` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla Tipo Usuarios';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tipos_usuarios`
+-- Volcado de datos para la tabla `tipos_usuarios`
 --
 
-LOCK TABLES `tipos_usuarios` WRITE;
-/*!40000 ALTER TABLE `tipos_usuarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tipos_usuarios` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `tipos_usuarios` (`tius_iden`, `tius_nomb`) VALUES
+(1, 'Administrador'),
+(2, 'Oferente');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuarios` (
-  `usua_iden` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `tius_iden` int(11) NOT NULL,
   `usua_nomb` varchar(100) NOT NULL,
-  `usua_emai` varchar(100) NOT NULL,
-  `usua_clav` char(32) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `password` varchar(60) NOT NULL,
   `usua_tele` varchar(20) NOT NULL,
   `usua_dire` varchar(100) NOT NULL,
-  `usua_conf` tinyint(1) NOT NULL,
-  `usua_regi` tinyint(1) NOT NULL,
-  PRIMARY KEY (`usua_iden`),
-  KEY `tius_iden` (`tius_iden`),
-  CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`tius_iden`) REFERENCES `tipos_usuarios` (`tius_iden`)
+  `usua_conf` tinyint(1) DEFAULT NULL,
+  `usua_regi` tinyint(1) DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla Usuarios';
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuarios`
+-- Volcado de datos para la tabla `usuarios`
 --
 
-LOCK TABLES `usuarios` WRITE;
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `usuarios` (`id`, `tius_iden`, `usua_nomb`, `email`, `password`, `usua_tele`, `usua_dire`, `usua_conf`, `usua_regi`, `updated_at`, `created_at`) VALUES
+(6, 2, 'Juan', 'juancamargo93@outlook.com', '$2y$10$I/JQZgvx2nf8BepEUd.P7.YgW.x5aDcu6u3nUz.JxQNLChDd88OUu', '3013096569', 'Cra 3 # 42 - 36', NULL, NULL, '2016-06-22 00:58:19', '2016-06-22 00:58:19');
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`come_iden`),
+  ADD KEY `usua_iden` (`usua_iden`),
+  ADD KEY `inmu_iden` (`inmu_iden`);
+
+--
+-- Indices de la tabla `inmuebles`
+--
+ALTER TABLE `inmuebles`
+  ADD PRIMARY KEY (`inmu_iden`);
+
+--
+-- Indices de la tabla `inmuebles_fotos`
+--
+ALTER TABLE `inmuebles_fotos`
+  ADD PRIMARY KEY (`info_iden`),
+  ADD KEY `info_inmu` (`inmu_iden`);
+
+--
+-- Indices de la tabla `lista_deseos`
+--
+ALTER TABLE `lista_deseos`
+  ADD PRIMARY KEY (`lide_iden`),
+  ADD KEY `inmu_iden` (`inmu_iden`),
+  ADD KEY `usua_iden` (`usua_iden`);
+
+--
+-- Indices de la tabla `tipos_usuarios`
+--
+ALTER TABLE `tipos_usuarios`
+  ADD PRIMARY KEY (`tius_iden`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tius_iden` (`tius_iden`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `come_iden` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `inmuebles`
+--
+ALTER TABLE `inmuebles`
+  MODIFY `inmu_iden` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `inmuebles_fotos`
+--
+ALTER TABLE `inmuebles_fotos`
+  MODIFY `info_iden` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `lista_deseos`
+--
+ALTER TABLE `lista_deseos`
+  MODIFY `lide_iden` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tipos_usuarios`
+--
+ALTER TABLE `tipos_usuarios`
+  MODIFY `tius_iden` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`usua_iden`) REFERENCES `usuarios` (`id`),
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`inmu_iden`) REFERENCES `inmuebles` (`inmu_iden`);
+
+--
+-- Filtros para la tabla `inmuebles_fotos`
+--
+ALTER TABLE `inmuebles_fotos`
+  ADD CONSTRAINT `info_inmu` FOREIGN KEY (`inmu_iden`) REFERENCES `inmuebles` (`inmu_iden`);
+
+--
+-- Filtros para la tabla `lista_deseos`
+--
+ALTER TABLE `lista_deseos`
+  ADD CONSTRAINT `lista_deseos_ibfk_1` FOREIGN KEY (`inmu_iden`) REFERENCES `inmuebles` (`inmu_iden`),
+  ADD CONSTRAINT `lista_deseos_ibfk_2` FOREIGN KEY (`usua_iden`) REFERENCES `usuarios` (`id`);
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`tius_iden`) REFERENCES `tipos_usuarios` (`tius_iden`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2016-06-16 23:23:24
