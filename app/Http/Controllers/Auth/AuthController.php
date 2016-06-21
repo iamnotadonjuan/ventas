@@ -4,8 +4,10 @@ namespace Ventas\Http\Controllers\Auth;
 
 use Ventas\User;
 use Validator;
+use Auth;
 use Ventas\Http\Controllers\Controller;
 use Ventas\Http\Requests\RegisterRequest;
+use Ventas\Http\Requests\LoginRequest;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
@@ -31,7 +33,7 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectPath = '/inmueble/create';
 
     /**
      * Create a new authentication controller instance.
@@ -49,8 +51,8 @@ class AuthController extends Controller
       {
         $usuario = new User;
         $usuario->usua_nomb = $request->Name;
-        $usuario->usua_emai = $request->Email;
-        $usuario->usua_clav = bcrypt($request->Password);
+        $usuario->email = $request->Email;
+        $usuario->password = $request->Password;
         $usuario->usua_dire = $request->Address;
         $usuario->usua_tele = $request->Phone;
         $usuario->tius_iden = 2;
@@ -61,4 +63,36 @@ class AuthController extends Controller
         ]);
       }
     }
+
+    public function postLogin(Request $request)
+    {
+      if (Auth::attempt(
+         [
+             'email' => $request->email,
+             'password' => $request->password,
+         ]
+
+         )){
+     return redirect()->intended($this->redirectPath());
+    }
+    else{
+       $rules = [
+           'email' => 'required|email',
+           'password' => 'required',
+       ];
+
+       $messages = [
+           'email.required' => 'El campo email es requerido',
+           'email.email' => 'El formato de email es incorrecto',
+           'password.required' => 'El campo password es requerido',
+       ];
+
+       $validator = Validator::make($request->all(), $rules, $messages);
+
+       return redirect('/')
+       ->withErrors($validator)
+       ->withInput()
+       ->with('message', 'Datos incorrectos');
+   }
+ }
 }

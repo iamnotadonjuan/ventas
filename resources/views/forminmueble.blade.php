@@ -1,5 +1,10 @@
 @extends('layouts.form')
 @section('content')
+  @if(Auth::check())
+    <p>
+      {{ Auth::user()->usua_nomb }}
+    </p>
+  @endif
     <div>
         <form id="form_inmu">
             <input type="text" name="text_nomb" id="text_nomb" placeholder="Nombre">

@@ -15,8 +15,10 @@ Route::get('/', function () {
     return view('inicio');
 });
 
-//route register
+//route register, login & logout
 Route::post('register', 'Auth\AuthController@postRegister');
+Route::post('login', 'Auth\AuthController@postLogin');
+Route::get('logout', 'Auth\AuthController@getLogout');
 
 Route::get('deseo/listar', 'DeseoController@listar');
 

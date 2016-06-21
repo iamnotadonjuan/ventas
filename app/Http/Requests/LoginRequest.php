@@ -4,7 +4,7 @@ namespace Ventas\Http\Requests;
 
 use Ventas\Http\Requests\Request;
 
-class RegisterRequest extends Request
+class LoginRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,8 @@ class RegisterRequest extends Request
     public function rules()
     {
         return [
-              'Name' => 'required|min:3|max:50',
-              'Email' => 'required|email|unique:usuarios,email',
-              'Password' => 'required',
-              'Address' => 'required|min:5|max:60',
-              'Phone' => 'required|min:7|max:20'
+            'Email' => 'required',
+            'Password' => 'required'
         ];
     }
 }

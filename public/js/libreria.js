@@ -64,3 +64,33 @@ function register()
     }
 });
 }
+
+/*function login()
+{
+  $("#email-msj-2,#password-msj-2").fadeIn();
+  var email = $('#email-2').val();
+  var password = $('#password-2').val();
+  var route = 'http://localhost/ventas/public/login';
+  var token = $('#token').val();
+  $.ajax({
+    url: route,
+    headers: {'X-CSRF-TOKEN': token},
+    type: 'POST',
+    dataType: 'json',
+    data: {Email: email, Password: password},
+
+    success:function()
+    {
+      console.log("Hola");
+    },
+
+    error:function(msj)
+    {
+      setTimeout(function() {
+        $("#email-msj-2,#password-msj-2").fadeOut(1500);
+      },3000);
+    $('#email-msj-2').html(msj.responseJSON.Email);
+    $('#password-msj-2').html(msj.responseJSON.Password);
+    }
+  });
+}*/

@@ -117,22 +117,21 @@
             <h3 class="modal-title" id="myModalLabel">Inicia Sesión</h3>
           </div>
           <div class="modal-body">
-
-    <form>
-      <div class="form-group">
-        <input type="email" class="form-control"  placeholder="Digite su correo">
-      </div>
-       <div class="form-group">
-        <input type="password" class="form-control"  placeholder="Digite su Clave">
-      </div>
-
-      </form>
-
-
-          </div>
-          <div id='box-register' class="modal-footer">
-            <button id='btn-register' type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button id='btn' type="button" class="btn btn-danger btn-fill">Acceder</button>
+          <form id='form-login' method='post' action="{!!URL::to('login')!!}">
+            <div class="form-group">
+              <input type="hidden" name="_token" value="{{csrf_token()}}" id='token'>
+              <input id='email' name='email' type="email" class="form-control" placeholder="Digite su correo" >
+              <div id='email-msj-2' class="text-danger"></div>
+            </div>
+             <div class="form-group">
+              <input id='password' name='password' type="password" class="form-control"  placeholder="Digite su Clave">
+              <div id='password-msj-2' class="text-danger"></div>
+            </div>
+            <div id='box-register' class="modal-footer">
+              <button id='btn-register' type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button id='btn' type="submit" class="btn btn-danger btn-fill">Acceder</button>
+            </div>
+          </form>
           </div>
         </div>
       </div>
