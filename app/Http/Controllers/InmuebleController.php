@@ -48,16 +48,20 @@ class InmuebleController extends Controller
         $inmueble->inmu_npis = $request->numb_piso;
         $inmueble->inmu_m2c  = $request->numb_m2c;
         $inmueble->inmu_m2nc = $request->numb_m2nc;
-        $inmueble->inmu_terr = $request->chec_terr;
+        $inmueble->inmu_terr = (!isset($request->chec_terr)) ? false : true;
         $inmueble->inmu_estr = $request->sele_estr;
-        $inmueble->inmu_agua = $request->chec_agua;
-        $inmueble->inmu_luz = $request->chec_ener;
-        $inmueble->inmu_gas  = $request->chec_gas;
-        $inmueble->inmu_tele = $request->chec_tele;
-        $inmueble->inmu_bbq  = $request->chec_bbq;
+        $inmueble->inmu_agua = (!isset($request->chec_agua)) ? false : true;
+        $inmueble->inmu_luz  = (!isset($request->chec_ener)) ? false : true;
+        $inmueble->inmu_gas  = (!isset($request->chec_gas)) ? false : true;
+        $inmueble->inmu_tele = (!isset($request->chec_tele)) ? false : true;
+        $inmueble->inmu_bbq  = (!isset($request->chec_bbq)) ? false : true;
         $inmueble->inmu_prop = $request->radi_prop;
+        $inmueble->inmu_feed = date("Y-m-d");
+        $inmueble->inmu_est  = 'Desactivado';
         
         $inmueble->save();
+        
+        echo json_encode(array("identificacion" => $inmueble->getKey()));
     }
 
     /**
