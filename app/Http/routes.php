@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('inicio');
-});
+//Route::get('/', function () {
+//    return view('inicio');
+//});
 
 //route register, login & logout
 Route::post('register', 'Auth\AuthController@postRegister');
@@ -22,6 +22,7 @@ Route::get('logout', 'Auth\AuthController@getLogout');
 
 Route::get('deseo/listar', 'DeseoController@listar');
 
+Route::get('/', 'InmuebleController@index');
 Route::get('inmueble/create', 'InmuebleController@create');
 Route::post('inmueble/store', 'InmuebleController@store');
 

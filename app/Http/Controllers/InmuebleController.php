@@ -2,6 +2,7 @@
 
 namespace Ventas\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Ventas\Http\Requests;
 
@@ -13,7 +14,15 @@ class InmuebleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {        
+        $inmuebles = DB::table('inmuebles')
+                        ->join('inmuebles_fotos', 'inmuebles_fotos.inmu_iden', '=', 'inmuebles.inmu_iden')
+                        ->select('*')
+                        ->groupBy('inmuebles.inmu_iden')->orderBy('inmuebles.inmu_fech','desc')->take(8)->get();
+        
+        
+        return view('inicio')->with('inmuebles', $inmuebles);
+        
     }
 
     /**
