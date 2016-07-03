@@ -12,6 +12,12 @@ class InmuebleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+  /*  public function __construct()
+    {
+      $this->middleware('auth');
+    }*/
+
     public function index()
     {
     }
@@ -35,7 +41,7 @@ class InmuebleController extends Controller
     public function store(Request $request)
     {
         $inmueble = new \Ventas\Inmueble();
-        
+
         $inmueble->inmu_nomb = $request->text_nomb;
         $inmueble->inmu_desc = $request->tear_desc;
         $inmueble->inmu_valo = $request->text_valo;
@@ -56,7 +62,7 @@ class InmuebleController extends Controller
         $inmueble->inmu_tele = $request->chec_tele;
         $inmueble->inmu_bbq  = $request->chec_bbq;
         $inmueble->inmu_prop = $request->radi_prop;
-        
+
         $inmueble->save();
     }
 

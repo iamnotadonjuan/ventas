@@ -1,10 +1,15 @@
 @extends('layouts.form')
 @section('content')
   @if(Auth::check())
-    <p>
-      {{ Auth::user()->usua_nomb }}
-    </p>
-  @endif
+      <div class="dropdown">
+        <a id="dLabel" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          {{ Auth::user()->usua_nomb }}
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dLabel">
+          <a href={{url('auth/logout')}}>Cerrar Sesión</a>
+        </ul>
+      </div>
     <div>
         <form id="form_inmu">
             <input type="text" name="text_nomb" id="text_nomb" placeholder="Nombre">
@@ -41,6 +46,7 @@
         </form>
     </div>
     <script type="text/javascript">
+
         $(document).ready(function(){
             // Validación de datos
             $("#form_inmu").validate({
@@ -63,4 +69,9 @@
             });
         });
     </script>
+  @else
+    <div class="container">
+      <h2>Debes iniciar sesión para poder crear una publicacion</h2>
+    </div>
+  @endif
 @endsection
