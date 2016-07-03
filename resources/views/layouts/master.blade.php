@@ -203,7 +203,8 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-3">
+                    @yield('inmuebles')
+<!--                    <div class="col-md-3">
 
                         <div class="info-icon">
                         <h4>Arriendo</h4>
@@ -279,9 +280,9 @@
 
                         </div>
                     </div>
-                </div>
+                </div>-->
 
-    <div class="row">
+<!--    <div class="row">
                     <div class="col-md-3">
                         <div class="info-icon">
                         <h4>Arriendo</h4>
@@ -349,7 +350,7 @@
 
 
                         </div>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>

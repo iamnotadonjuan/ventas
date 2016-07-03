@@ -16,7 +16,13 @@ function enviarFormulario(url, formulario)
         contentType: false,
         success: function(data)
         {
-
+            try {
+                var jsonData = JSON.parse(data);
+                
+                $('#hidd_idin').val(jsonData.identificacion);          // Identificación del inmueble
+            } catch (e){
+                console.log(e.message);
+            }
         }
     });
 }

@@ -19,6 +19,11 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="<?php echo asset('/js/libreria.js') ?>"></script>
         <script src="<?php echo asset('/js/jquery.validate.min.js') ?>"></script>
+        
+        <!-- Carga de Imagenes -->
+        <link href="<?php echo asset('css/jquery.filer.css') ?>" type="text/css" rel="stylesheet" />
+        <link href="<?php echo asset('css/themes/jquery.filer-dragdropbox-theme.css') ?>" type="text/css" rel="stylesheet" />
+        <script src="<?php echo asset('js/jquery.filer.js') ?>"></script>
     </head>
     <body>
         @yield('content')
