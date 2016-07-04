@@ -12,8 +12,9 @@
                 <p class="description">{{$inmueble->inmu_nomb}}</p>
 
                 <a href="#" class="btn-fill">
-                <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</a><br/><br/>
-                <a class="btn btn-danger btn-fill" onclick="enviarAccion('{{url('inmueble/show', [$inmueble->inmu_iden])}}', '{{csrf_token()}}');">Ver Más</a>
+                    <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos
+                </a><br/><br/>
+                <a class="btn btn-danger btn-fill" data-toggle="modal" data-target="#modalinmueble" onclick="enviarAccion('{{url('inmueble/show', [$inmueble->inmu_iden])}}', '{{csrf_token()}}');">Ver Más</a>
             </div>
         </div>
     @endforeach

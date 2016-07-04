@@ -982,7 +982,7 @@
 			feedback: "Choose files To Upload",
 			feedback2: "files were chosen",
 			drop: "Drop file here to Upload",
-			removeConfirmation: "¿Quieres retirar estas imagenes?",
+			removeConfirmation: "¿Quieres retirar esta imagen?",
 			errors: {
 				filesLimit: "Only {{fi-limit}} files are allowed to be uploaded.",
 				filesType: "Only Images are allowed to be uploaded.",

@@ -244,10 +244,25 @@
                     enctype: 'multipart/form-data',
                     beforeSend: function(){
                     },
-                    success: function(data, el){
+                    success: function(data, el, l, p, o, s, id, textStatus, jqXHR){
+                        
                         var parent = el.find(".jFiler-jProgressBar").parent();
+                        var jsonData = JSON.parse(data);
+                        
                         el.find(".jFiler-jProgressBar").fadeOut("slow", function(){
                             $("<div class=\"jFiler-item-others text-success\"><i class=\"icon-jfi-check-circle\"></i> Success</div>").hide().appendTo(parent).fadeIn("slow");
+                        });
+                        
+                        $('.jFiler-item').each(function(){ 
+                            if ($(this).attr('data-jfiler-index') == id) {
+                                $(this).find('.icon-jfi-trash').click(function(){
+                                    $.ajax({
+                                       type: 'POST',
+                                       url: '<?php echo url('inmueblefoto/destroy'); ?>/' + jsonData.identificacion,
+                                       data: { _token: '{{csrf_token()}}' }
+                                    });
+                                });
+                            }
                         });
                     },
                     error: function(el){

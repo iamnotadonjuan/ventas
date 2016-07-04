@@ -47,6 +47,8 @@ class InmuebleFotoController extends Controller
         $inmuebleFoto->info_foto = $nombre;
         
         $inmuebleFoto->save();
+        
+        echo json_encode(array("identificacion" => $inmuebleFoto->getKey()));
     }
 
     /**
@@ -92,5 +94,7 @@ class InmuebleFotoController extends Controller
     public function destroy($id)
     {
         //
+        $inmuebleFoto = new \Ventas\InmuebleFoto();
+        $inmuebleFoto->destroy($id);
     }
 }

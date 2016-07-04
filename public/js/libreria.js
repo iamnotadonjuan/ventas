@@ -41,9 +41,9 @@ function enviarAccion(url, token)
         data: { _token: token },
         success: function(data)
         {
-            $('.modal-body').html(data);
+            $('#modalinmueble .modal-body').html(data);
             $('.carousel').carousel();
-            $('#modalinmueble').modal();
+            //$('#modalinmueble').modal();
         }
     });
 }
