@@ -27,6 +27,27 @@ function enviarFormulario(url, formulario)
     });
 }
 
+/**
+ *
+ * @param {type} url
+ * @param {type} formulario
+ * @returns {void}
+ */
+function enviarAccion(url, token)
+{
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: { _token: token },
+        success: function(data)
+        {
+            $('.modal-body').html(data);
+            $('.carousel').carousel();
+            $('#modalinmueble').modal();
+        }
+    });
+}
+
 function register()
 {
   $("#name-msj,#email-msj,#password-msj,#address-msj,#phone-msj").fadeIn();

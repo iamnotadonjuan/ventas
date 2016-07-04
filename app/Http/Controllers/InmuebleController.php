@@ -81,7 +81,13 @@ class InmuebleController extends Controller
      */
     public function show($id)
     {
-        //
+        $inmuebles = DB::table('inmuebles')
+                        ->join('inmuebles_fotos', 'inmuebles_fotos.inmu_iden', '=', 'inmuebles.inmu_iden')
+                        ->select('*')
+                        ->where('inmuebles.inmu_iden',$id)
+                        ->groupBy('inmuebles.inmu_iden')->orderBy('inmuebles.inmu_fech','desc')->take(8)->get();
+        
+        return view('listarinmueble')->with('inmuebles', $inmuebles);
     }
 
     /**

@@ -78,11 +78,11 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="numb_habi" class="col-md-2 control-label">Número de metros cuadrados</label>
+                    <label for="numb_habi" class="col-md-2 control-label">Metros cuadrados</label>
                     <div class="col-md-2">
                         <input type="number" name="numb_m2c" id="numb_m2c" placeholder="50" class="form-control">
                     </div>
-                    <label for="numb_habi" class="col-md-2 control-label">Número de metros cuadrados completamente</label>
+                    <label for="numb_habi" class="col-md-2 control-label">Metros cuadrados completos</label>
                     <div class="col-md-2">
                         <input type="number" name="numb_m2nc" id="numb_m2nc" placeholder="50" class="form-control">
                     </div>

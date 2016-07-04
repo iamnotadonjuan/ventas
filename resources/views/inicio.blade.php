@@ -13,7 +13,7 @@
 
                 <a href="#" class="btn-fill">
                 <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</a><br/><br/>
-                <a href="#" class="btn btn-danger btn-fill">Ver Más</a>
+                <a class="btn btn-danger btn-fill" onclick="enviarAccion('{{url('inmueble/show', [$inmueble->inmu_iden])}}', '{{csrf_token()}}');">Ver Más</a>
             </div>
         </div>
     @endforeach

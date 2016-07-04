@@ -25,5 +25,7 @@ Route::get('deseo/listar', 'DeseoController@listar');
 Route::get('/', 'InmuebleController@index');
 Route::get('inmueble/create', 'InmuebleController@create');
 Route::post('inmueble/store', 'InmuebleController@store');
+Route::post('inmueble/show/{id}', 'InmuebleController@show');
+
 
 Route::post('inmueblefoto/store', 'InmuebleFotoController@store');

@@ -516,6 +516,23 @@
                 </div>
             </div>
         </footer>
+        
+        <!-- Ver inmueble -->
+        <div class="modal fade" tabindex="-1" role="dialog" data-target="#modalinmueble" id="modalinmueble">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Inmueble</h4>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
         <!--   core js files    -->
         <script src="<?php echo asset('js/jquery.min.js') ?>" type="text/javascript"></script>
@@ -532,8 +549,5 @@
 
         <!-- file where we handle consults in server by ajax -->
         <script type="text/javascript" src='js/libreria.js'></script>
-        <script type="text/javascript">
-
-        </script>
     </body>
 </html>
