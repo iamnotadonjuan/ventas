@@ -1,10 +1,15 @@
 @extends('layouts.form')
 @section('content')
   @if(Auth::check())
-    <p>
-      {{ Auth::user()->usua_nomb }}
-    </p>
-  @endif
+    <div class="dropdown">
+      <a id="dLabel" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        {{ Auth::user()->usua_nomb }}
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dLabel">
+        <a href={{url('auth/logout')}}>Cerrar Sesión</a>
+      </ul>
+    </div>
     <div class="container">
         <div class="row">
             <form id="form_inmu" class="form-horizontal">
@@ -143,8 +148,9 @@
             </form>
         </div>
     </div>
-  
+
     <script type="text/javascript">
+
         $(document).ready(function(){
             // Validación de datos
             $("#form_inmu").validate({
@@ -165,7 +171,7 @@
                   enviarFormulario('<?php echo action('InmuebleController@store'); ?>','#form_inmu');
                 }
             });
-            
+
             $('#filer_input').filer({
                 changeInput: '<div class="jFiler-input-dragDrop "><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Arrastra las imagenes aquí</h3> <span style="display:inline-block; margin: 15px 0">o</span></div><a class="jFiler-input-choose-btn blue">Buscalas</a></div></div>',
                 showThumbs: true,
@@ -241,13 +247,13 @@
                     success: function(data, el){
                         var parent = el.find(".jFiler-jProgressBar").parent();
                         el.find(".jFiler-jProgressBar").fadeOut("slow", function(){
-                            $("<div class=\"jFiler-item-others text-success\"><i class=\"icon-jfi-check-circle\"></i> Success</div>").hide().appendTo(parent).fadeIn("slow");    
+                            $("<div class=\"jFiler-item-others text-success\"><i class=\"icon-jfi-check-circle\"></i> Success</div>").hide().appendTo(parent).fadeIn("slow");
                         });
                     },
                     error: function(el){
                         var parent = el.find(".jFiler-jProgressBar").parent();
                         el.find(".jFiler-jProgressBar").fadeOut("slow", function(){
-                            $("<div class=\"jFiler-item-others text-error\"><i class=\"icon-jfi-minus-circle\"></i> Error</div>").hide().appendTo(parent).fadeIn("slow");    
+                            $("<div class=\"jFiler-item-others text-error\"><i class=\"icon-jfi-minus-circle\"></i> Error</div>").hide().appendTo(parent).fadeIn("slow");
                         });
                     },
                     statusCode: null,
@@ -255,7 +261,12 @@
                     onComplete: null
                 }
             });
-            
+
         });
     </script>
+  @else
+    <div class="container">
+      <h2>Debes iniciar sesión para poder crear una publicacion</h2>
+    </div>
+  @endif
 @endsection

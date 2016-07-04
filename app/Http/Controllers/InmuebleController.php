@@ -13,16 +13,22 @@ class InmuebleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+  /*  public function __construct()
+    {
+      $this->middleware('auth');
+    }*/
+
     public function index()
-    {        
+    {
         $inmuebles = DB::table('inmuebles')
                         ->join('inmuebles_fotos', 'inmuebles_fotos.inmu_iden', '=', 'inmuebles.inmu_iden')
                         ->select('*')
                         ->groupBy('inmuebles.inmu_iden')->orderBy('inmuebles.inmu_fech','desc')->take(8)->get();
-        
-        
+
+
         return view('inicio')->with('inmuebles', $inmuebles);
-        
+
     }
 
     /**
@@ -44,7 +50,7 @@ class InmuebleController extends Controller
     public function store(Request $request)
     {
         $inmueble = new \Ventas\Inmueble();
-        
+
         $inmueble->inmu_nomb = $request->text_nomb;
         $inmueble->inmu_desc = $request->tear_desc;
         $inmueble->inmu_valo = $request->text_valo;
@@ -67,7 +73,6 @@ class InmuebleController extends Controller
         $inmueble->inmu_prop = $request->radi_prop;
         $inmueble->inmu_feed = date("Y-m-d");
         $inmueble->inmu_est  = 'Desactivado';
-        
         $inmueble->save();
         
         echo json_encode(array("identificacion" => $inmueble->getKey()));
