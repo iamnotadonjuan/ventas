@@ -128,4 +128,16 @@ class InmuebleController extends Controller
     {
         //
     }
+    
+    /**
+     * 
+     */
+    public function administrarInmuebles()
+    {
+        $inmuebles = DB::table('inmuebles')
+                        ->select('*')
+                        ->orderBy('inmuebles.inmu_iden','desc')->paginate(10);
+        
+        return view('listarinmuebles')->with('inmuebles', $inmuebles);
+    }
 }

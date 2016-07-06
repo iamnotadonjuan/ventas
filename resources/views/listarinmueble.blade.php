@@ -12,7 +12,7 @@
     <div class="carousel-inner" role="listbox">
         @foreach ($inmuebles as $inmueble)
             <div class="item active">
-                <img src="../storage/app/{{$inmueble->info_foto}}" alt="...">
+                <img src="/ventas/storage/app/{{$inmueble->info_foto}}" alt="...">
                 <div class="carousel-caption">
                     {{$inmueble->info_foto}}
                 </div>
