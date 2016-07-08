@@ -33,9 +33,23 @@
                        Arrendamos
                     </a>
                 </div>
+                @if(Auth::check())
+                  <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right navbar-uppercase">
+                      <li class="dropdown">
+                        <a class="name" id="dLabel" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                          {{ Auth::user()->usua_nomb }}
+                          <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                          <a href={{url('auth/logout')}}>Cerrar Sesión</a>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                @else
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right navbar-uppercase">
-
                         <li class="dropdown">
                             <a href="#gaia" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-share-alt"></i>Compartir
@@ -60,9 +74,8 @@
                         </li>
                     </ul>
                 </div>
+              @endif
                 <!-- /.navbar-collapse -->
-
-
     <!-- form registrate-->
     <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-sm" role="document">
@@ -100,7 +113,7 @@
       </form>
           </div>
           <div id='box-register' class="modal-footer">
-            <button id='btn-register' type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button id='btn-register' type="button" class="btn btn-default btn-border" data-dismiss="modal">Close</button>
             <button id='btn' type="button" class="btn btn-danger btn-fill" onclick="register();">Registrarse</button>
           </div>
         </div>
@@ -137,12 +150,8 @@
       </div>
     </div>
     <!-- form fin Iniciar Sesión-->
-
-
             </div>
         </nav>
-
-
         <div class="section section-header">
             <div class="parallax filter filter-color-blue">
                 <div class="image"
@@ -151,9 +160,9 @@
                 <div class="container">
                     <div class="content">
                         <div class="title-area">
-                            <p>Encuentra</p>
+                            <p id='encuentra'>Encuentra</p>
                             <h1 class="title-modern">Inmuebles</h1>
-                            <h3>Inicia tu busqueda aquí</h2>
+                            <h3 id='title-search'>Inicia tu busqueda aquí</h2>
                             <div class="row">
                              <div class="col-md-6">
                              <label>Tipo de inmueble:</label>
@@ -172,21 +181,16 @@
                            <div class="col-md-12">
                               <label>Buscar por palabra:</label>
                              <input type="text" name="palabra" class="form-control">
-
                              </div>
-
                             </div>
-
                           <!--  <div class="separator line-separator">♦</div> -->
-                        </div>
-
-                        <div class="button-get-started">
-                            <a href="#" target="_blank" class="btn btn-danger btn-fill btn-lg ">
-                                Buscar
-                            </a>
+                          <div class="button-get-started">
+                              <a href="#" target="_blank" class="btn btn-danger btn-fill btn-lg ">
+                                  Buscar
+                              </a>
+                          </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -512,11 +516,11 @@
                 </div>
                 <hr>
                 <div class="copyright">
-                     © <script> document.write(new Date().getFullYear()) </script> Theblacklotus, hecho con amor
+                     ©  <script> document.write(new Date().getFullYear()) </script> Made with ♥ & Laravel
                 </div>
             </div>
         </footer>
-        
+
         <!-- Ver inmueble -->
         <div class="modal fade" tabindex="-1" role="dialog" data-target="#modalinmueble" id="modalinmueble">
             <div class="modal-dialog">

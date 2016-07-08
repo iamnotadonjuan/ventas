@@ -13,3 +13,123 @@
   background-color: red;
   color: white;
 }
+
+.name
+{
+  border: 1px solid;
+}
+
+#title-search
+{
+  padding-top: 50px;
+}
+
+.button-get-started
+{
+  padding-top: 60px;
+}
+
+.title-area label
+{
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.btn-border
+{
+  border: none;
+}
+
+.filter.filter-color-blue:before {
+    background: rgba(1, 87, 155, 0.7);
+}
+
+@media screen and (max-width: 992px)
+{
+  .section-header .content h1
+  {
+      font-size: 3.5em;
+      letter-spacing: 0.07em;
+      line-height: 1.7;
+  }
+  .section-header .parallax, .section-header .static-image {
+    height: 80vh;
+    padding-bottom: 40em;
+  }
+
+  .title-modern
+  {
+    display: none;
+  }
+
+  #encuentra
+  {
+    display: none;
+  }
+
+  .title-area label
+  {
+    font-size: 17px;
+    text-decoration: none;
+  }
+  .button-get-started
+  {
+    padding-top: 15px;
+  }
+}
+@media screen and (max-width: 765px)
+{
+ .title-modern
+  {
+    margin-top: 35px !important;
+    font-size: 45px !important;
+  }
+
+  .section-header .content
+  {
+    top: 47%;
+  }
+
+  #title-search
+  {
+    padding-top: 10px;
+  }
+
+  .title-modern
+  {
+    margin-top: 0px !important;
+  }
+
+  .button-get-started
+  {
+    padding-top: 20px !important;
+  }
+
+  .title-area label
+  {
+    font-size: 16px;
+    text-decoration: none;
+  }
+
+  #encuentra
+  {
+    display: none;
+  }
+
+  .name
+  {
+    border: none;
+  }
+}
+
+@media screen and (max-width: 589px)
+{
+  .title-modern
+  {
+    display: none;
+  }
+
+  .section-header .content {
+      top: 56% !important;
+  }
+}
