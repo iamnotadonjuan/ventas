@@ -43,7 +43,10 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dLabel">
                           <li>
-                            <a href={{url('auth/logout')}}>Cerrar Sesión</a>
+                            <li><a href={{url('/inmueble/create')}}>Registrar inmueble</a></li>
+                            <li><a href={{url('auth/logout')}}>Mi perfil</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href={{url('auth/logout')}}>Cerrar Sesión</a></li>
                           </li>
                         </ul>
                       </li>
@@ -122,7 +125,6 @@
       </div>
     </div>
     <!-- form fin registrate-->
-
     <!-- form Iniciar Sesión-->
     <div class="modal fade bs-example-modal-sm" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-sm" role="document">
@@ -196,8 +198,6 @@
                 </div>
             </div>
         </div>
-
-
         <div class="section">
             <div class="container">
 
@@ -422,7 +422,6 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>

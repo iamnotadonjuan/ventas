@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="text_desc" class="col-md-2 control-label">Descripción</label>
+                    <label for="tear_desc" class="col-md-2 control-label">Descripción</label>
                     <div class="col-md-10">
                         <textarea name="tear_desc" id="tear_desc" placeholder="Descripción" class="form-control"></textarea>
                     </div>
@@ -50,7 +50,7 @@
                     <div class="col-md-2">
                         <input type="number" name="numb_npla" id="numb_npla" placeholder="1" class="form-control">
                     </div>
-                    <label for="text_fech" class="col-md-2 control-label">Fecha</label>
+                    <label for="date_fech" class="col-md-2 control-label">Fecha</label>
                     <div class="col-md-2">
                         <input type="date" name="date_fech" id="date_fech" class="form-control" placeholder="dd/mm/aaaa">
                     </div>
@@ -60,25 +60,25 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="numb_habi" class="col-md-2 control-label">Número de baños</label>
+                    <label for="numb_bano" class="col-md-2 control-label">Número de baños</label>
                     <div class="col-md-2">
                         <input type="number" name="numb_bano" id="numb_bano" placeholder="1" class="form-control">
                     </div>
-                    <label for="numb_habi" class="col-md-2 control-label">Número de parqueaderos</label>
+                    <label for="numb_parq" class="col-md-2 control-label">Número de parqueaderos</label>
                     <div class="col-md-2">
                         <input type="number" name="numb_parq" id="numb_parq" placeholder="1" class="form-control">
                     </div>
-                    <label for="numb_habi" class="col-md-2 control-label">Número de pisos</label>
+                    <label for="numb_piso" class="col-md-2 control-label">Número de pisos</label>
                     <div class="col-md-2">
                         <input type="number" name="numb_piso" id="numb_piso" placeholder="1" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="numb_habi" class="col-md-2 control-label">Metros cuadrados</label>
+                    <label for="numb_m2c" class="col-md-2 control-label">Metros cuadrados</label>
                     <div class="col-md-2">
                         <input type="number" name="numb_m2c" id="numb_m2c" placeholder="50" class="form-control">
                     </div>
-                    <label for="numb_habi" class="col-md-2 control-label">Metros cuadrados completos</label>
+                    <label for="numb_m2nc" class="col-md-2 control-label">Metros cuadrados completos</label>
                     <div class="col-md-2">
                         <input type="number" name="numb_m2nc" id="numb_m2nc" placeholder="50" class="form-control">
                     </div>
@@ -236,15 +236,15 @@
                     beforeSend: function(){
                     },
                     success: function(data, el, l, p, o, s, id, textStatus, jqXHR){
-                        
+
                         var parent = el.find(".jFiler-jProgressBar").parent();
                         var jsonData = JSON.parse(data);
-                        
+
                         el.find(".jFiler-jProgressBar").fadeOut("slow", function(){
                             $("<div class=\"jFiler-item-others text-success\"><i class=\"icon-jfi-check-circle\"></i> Success</div>").hide().appendTo(parent).fadeIn("slow");
                         });
-                        
-                        $('.jFiler-item').each(function(){ 
+
+                        $('.jFiler-item').each(function(){
                             if ($(this).attr('data-jfiler-index') == id) {
                                 $(this).find('.icon-jfi-trash').click(function(){
                                     $.ajax({

@@ -20,7 +20,7 @@
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="<?php echo asset('/js/libreria.js') ?>"></script>
         <script src="<?php echo asset('/js/jquery.validate.min.js') ?>"></script>
-        
+
         <!-- Carga de Imagenes -->
         <link href="<?php echo asset('css/jquery.filer.css') ?>" type="text/css" rel="stylesheet" />
         <link href="<?php echo asset('css/themes/jquery.filer-dragdropbox-theme.css') ?>" type="text/css" rel="stylesheet" />
@@ -31,6 +31,12 @@
         <nav class="navbar navbar-default">
             <div class="container-fluid">
               <div class="navbar-header">
+                <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar bar1"></span>
+                    <span class="icon-bar bar2"></span>
+                    <span class="icon-bar bar3"></span>
+                </button>
                     <a class="navbar-brand" href="{{url('inmueble/administrarinmuebles')}}">Arrendamos</a>
               </div>
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -50,23 +56,121 @@
                             <a href="{{url('inmueble/create')}}">Crear publicacion<span class="sr-only">(current)</span></a>
                         </li>
                     @endif
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        {{ Auth::user()->usua_nomb }}<span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a href={{url('auth/logout')}}>Mi perfil</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href={{url('auth/logout')}}>Cerrar Sesión</a></li>
-                    </ul>
-                  </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                          {{ Auth::user()->usua_nomb }}<span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a href={{url('/')}}>Home</a></li>
+                        <li><a href={{url('auth/logout')}}>Mi perfil</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href={{url('auth/logout')}}>Cerrar Sesión</a></li>
+                      </ul>
+                    </li>
                 </ul>
               </div>
             </div>
         </nav>
-        
-        @yield('contenido')
+        <div class="container">
+          @yield('contenido')
+        </div>
+        <footer class="footer footer-big footer-color-black" data-color="black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-2 col-sm-3">
+                        <div class="info">
+                            <h5 class="title">Nuestra Empresa</h5>
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <a href="#">Inicio</a></li>
+                                    <li>
+                                        <a href="#">Nuestro portafolio</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Acerca de nosotros</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-md-offset-1 col-sm-3">
+                        <div class="info">
+                            <h5 class="title">Ayuda y soporte</h5>
+                             <nav>
+                                <ul>
+                                    <li>
+                                        <a href="#">Contáctenos</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">Terminos y condiciones</a>
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3">
+                        <div class="info">
+                            <h5 class="title">Ultimas Noticias</h5>
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-twitter"></i> <b>Get Shit Done</b> The best kit in the market is here, just give it a try and let us...
+                                            <hr class="hr-small">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-twitter"></i> We've just been featured on <b> Awwwards Website</b>! Thank you everybody for...
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-md-offset-1 col-sm-3">
+                        <div class="info">
+                            <h5 class="title">Siguenos</h5>
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <a href="#" class="btn btn-social btn-facebook btn-simple">
+                                            <i class="fa fa-facebook-square"></i> Facebook
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#" class="btn btn-social btn-twitter btn-simple">
+                                            <i class="fa fa-twitter"></i> Twitter
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="btn btn-social btn-reddit btn-simple">
+                                            <i class="fa fa-google-plus-square"></i> Google+
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="copyright">
+                     ©  <script> document.write(new Date().getFullYear()) </script> Made with ♥ & Laravel
+                </div>
+            </div>
+        </footer>
     </body>
+
+    <!--  js library for devices recognition -->
+    <script type="text/javascript" src="<?php echo asset('/js/modernizr.js')?>"></script>
+
+    <!--   file where we handle all the script from the Gaia - Bootstrap Template   -->
+    <script type="text/javascript" src="<?php echo asset('js/gaia.js')?> "></script>
+
+    <!-- file where we handle consults in server by ajax -->
+    <script type="text/javascript" src='js/libreria.js'></script>
 </html>
