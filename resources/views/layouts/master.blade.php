@@ -42,7 +42,9 @@
                           <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dLabel">
-                          <a href={{url('auth/logout')}}>Cerrar Sesión</a>
+                          <li>
+                            <a href={{url('auth/logout')}}>Cerrar Sesión</a>
+                          </li>
                         </ul>
                       </li>
                     </ul>

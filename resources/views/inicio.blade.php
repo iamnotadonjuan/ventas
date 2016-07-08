@@ -11,11 +11,33 @@
                 <h3>Área: {{$inmueble->inmu_m2c}} M<sup>2</sup></h3>
                 <p class="description">{{$inmueble->inmu_nomb}}</p>
 
-                <a href="#" class="btn-fill">
-                    <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos
-                </a><br/><br/>
+                @if(Auth::check())
+                    <a style="cursor: pointer" onclick="enviarAccion('{{ url('deseo/store') }}/{{$inmueble->inmu_iden}}','{{ csrf_token() }}');" class="btn-fill">
+                        <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos
+                    </a>
+                    <br/><br/>
+                @endif
                 <a class="btn btn-danger btn-fill" data-toggle="modal" data-target="#modalinmueble" onclick="enviarAccion('{{url('inmueble/show', [$inmueble->inmu_iden])}}', '{{csrf_token()}}');">Ver Más</a>
             </div>
         </div>
     @endforeach
+    
+    <!-- Ver inmueble -->
+    <div class="modal fade" tabindex="-1" role="dialog" data-target="#modalinmueble" id="modalinmueble">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Inmueble</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                @if(Auth::check())
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</button>
+                    </div>
+                @endif
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->    
 @endsection

@@ -67,32 +67,32 @@ class AuthController extends Controller
     public function postLogin(Request $request)
     {
       if (Auth::attempt(
-         [
-             'email' => $request->email,
-             'password' => $request->password,
-         ]
+            [
+                'email' => $request->email,
+                'password' => $request->password,
+            ]
 
-         )){
-     return redirect()->intended($this->redirectPath());
+            )){
+          
+            return redirect()->intended($this->redirectPath());
+        } else {
+            $rules = [
+                'email' => 'required|email',
+                'password' => 'required',
+            ];
+
+            $messages = [
+                'email.required' => 'El campo email es requerido',
+                'email.email' => 'El formato de email es incorrecto',
+                'password.required' => 'El campo password es requerido',
+            ];
+
+            $validator = Validator::make($request->all(), $rules, $messages);
+
+            return redirect('/')
+            ->withErrors($validator)
+            ->withInput()
+            ->with('message', 'Datos incorrectos');
+        }
     }
-    else{
-       $rules = [
-           'email' => 'required|email',
-           'password' => 'required',
-       ];
-
-       $messages = [
-           'email.required' => 'El campo email es requerido',
-           'email.email' => 'El formato de email es incorrecto',
-           'password.required' => 'El campo password es requerido',
-       ];
-
-       $validator = Validator::make($request->all(), $rules, $messages);
-
-       return redirect('/')
-       ->withErrors($validator)
-       ->withInput()
-       ->with('message', 'Datos incorrectos');
-   }
- }
 }

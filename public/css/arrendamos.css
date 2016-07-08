@@ -40,9 +40,16 @@
   border: none;
 }
 
-.filter.filter-color-blue:before {
+.filter.filter-color-blue:before
+{
     background: rgba(1, 87, 155, 0.7);
 }
+
+td > .btn.active
+{
+    background-color: #286090 !important;
+}
+
 
 @media screen and (max-width: 992px)
 {
@@ -129,7 +136,8 @@
     display: none;
   }
 
-  .section-header .content {
+  .section-header .content
+  {
       top: 56% !important;
   }
 }
