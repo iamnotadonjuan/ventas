@@ -1,15 +1,6 @@
-@extends('layouts.form')
-@section('content')
+@extends('layouts.autenticado')
+@section('contenido')
   @if(Auth::check())
-    <div class="dropdown">
-      <a id="dLabel" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        {{ Auth::user()->usua_nomb }}
-        <span class="caret"></span>
-      </a>
-      <ul class="dropdown-menu" aria-labelledby="dLabel">
-        <a href={{url('auth/logout')}}>Cerrar Sesión</a>
-      </ul>
-    </div>
     <div class="container">
         <div class="row">
             <form id="form_inmu" class="form-horizontal">

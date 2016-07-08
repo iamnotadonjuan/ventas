@@ -19,28 +19,15 @@
                         <td>{{$inmueble->inmu_nomb}}</td>
                         <td>{{$inmueble->inmu_desc}}</td>
                         <td class="toggle-field">
-                            @if(Auth::user()->tius_iden == 1)
-                                @if ($inmueble->inmu_est === 'Desactivado')
-                                    <button id="butt_esta{{$inmueble->inmu_iden}}" type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" onclick="cambiarEstadoInmueble('<?php echo url('inmueble/cambiarestado'); ?>' ,'{{csrf_token()}}',{{$inmueble->inmu_iden}})">
-                                @else
-                                    <button id="butt_esta{{$inmueble->inmu_iden}}" type="button" class="btn btn-primary active" data-toggle="button" aria-pressed="true" autocomplete="off" onclick="cambiarEstadoInmueble('<?php echo url('inmueble/cambiarestado'); ?>' ,'{{csrf_token()}}',{{$inmueble->inmu_iden}})">
-                                @endif
-                                    {{$inmueble->inmu_est}}
-                                </button>
-                            @else
-                                {{$inmueble->inmu_est}}
-                            @endif
+                            {{$inmueble->inmu_est}}
                         </td>
                         <td>
                             <a style="cursor: pointer" data-toggle="modal" data-target="#modalinmueble" onclick="enviarAccion('{{url('inmueble/show', [$inmueble->inmu_iden])}}', '{{csrf_token()}}');">
                                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                             </a>
-                            
-                            @if(Auth::user()->tius_iden == 2)
-                                <a style="cursor: pointer" data-toggle="modal" data-target="#modalinmueble" onclick="enviarAccion('{{url('inmueble/show', [$inmueble->inmu_iden])}}', '{{csrf_token()}}');">
-                                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                                </a>
-                            @endif
+                            <a style="cursor: pointer" href="{{url('deseo/destroy', [$inmueble->lide_iden])}}">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </a>
                         </td>
                     </tr>
                 @endforeach

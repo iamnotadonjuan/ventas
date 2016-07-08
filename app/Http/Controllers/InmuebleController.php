@@ -13,22 +13,15 @@ class InmuebleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-  /*  public function __construct()
-    {
-      $this->middleware('auth');
-    }*/
-
     public function index()
     {
         $inmuebles = DB::table('inmuebles')
                         ->join('inmuebles_fotos', 'inmuebles_fotos.inmu_iden', '=', 'inmuebles.inmu_iden')
                         ->select('*')
+                        ->where('inmuebles.inmu_est', '=', 'Activo')
                         ->groupBy('inmuebles.inmu_iden')->orderBy('inmuebles.inmu_fech','desc')->take(8)->get();
 
-
         return view('inicio')->with('inmuebles', $inmuebles);
-
     }
 
     /**
@@ -73,6 +66,7 @@ class InmuebleController extends Controller
         $inmueble->inmu_prop = $request->radi_prop;
         $inmueble->inmu_feed = date("Y-m-d");
         $inmueble->inmu_est  = 'Desactivado';
+        $inmueble->usua_iden = $request->user()->id;
         $inmueble->save();
         
         echo json_encode(array("identificacion" => $inmueble->getKey()));
@@ -130,14 +124,48 @@ class InmuebleController extends Controller
     }
     
     /**
+     * Lista todos los inmuebles que serán activados para su muestra
      * 
+     * @return view
      */
-    public function administrarInmuebles()
+    public function administrarInmuebles(Request $request)
     {
-        $inmuebles = DB::table('inmuebles')
-                        ->select('*')
-                        ->orderBy('inmuebles.inmu_iden','desc')->paginate(10);
+        if($request->user()->tius_iden == 1){
+            $inmuebles = DB::table('inmuebles')
+                            ->select('*')
+                            ->orderBy('inmuebles.inmu_iden','desc')->paginate(10);
+        } else {
+            $inmuebles = DB::table('inmuebles')
+                            ->select('*')
+                            ->where('inmuebles.usua_iden', '=', $request->user()->id)
+                            ->orderBy('inmuebles.inmu_iden','desc')->paginate(10);
+        }
         
         return view('listarinmuebles')->with('inmuebles', $inmuebles);
+    }
+    
+    /**
+     * Cambia el estado del inmueble seleccionado
+     * 
+     * @param Request $request
+     */
+    public function cambiarEstado(Request $request)
+    {
+        $estado = 'Desactivado';
+        $identificacion = $request->identificacion;
+        
+        $inmueble = \Ventas\Inmueble::find($identificacion);
+        
+        if($inmueble->inmu_est == 'Activo'){
+            $inmueble->inmu_est = 'Desactivado';
+            $estado = 'Desactivado';
+        }else{
+            $inmueble->inmu_est = 'Activo';
+            $estado = 'Activo';
+        }
+
+        $inmueble->save();
+
+        echo json_encode(array("estado" => $estado));
     }
 }

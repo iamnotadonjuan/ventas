@@ -2,6 +2,7 @@
 
 namespace Ventas\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 use Ventas\Http\Requests;
@@ -13,9 +14,15 @@ class DeseoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $inmuebles = DB::table('inmuebles')
+                        ->join('lista_deseos', 'lista_deseos.inmu_iden', '=', 'inmuebles.inmu_iden')
+                        ->select('*')
+                        ->where('inmuebles.usua_iden', '=', $request->user()->id)
+                        ->orderBy('inmuebles.inmu_fech','desc')->paginate(10);
+        
+        return view('listardeseos')->with('inmuebles', $inmuebles);
     }
 
     /**
@@ -32,11 +39,17 @@ class DeseoController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        $deseo = new \Ventas\Deseo();
+        
+        $deseo->inmu_iden = $id;
+        $deseo->usua_iden = 7;
+        
+        $deseo->save();
     }
 
     /**
@@ -79,9 +92,12 @@ class DeseoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $deseo = \Ventas\Deseo::find($id);
+        $deseo->delete();
+        
+        return redirect('deseo/listar');
     }
     
     public function listar()

@@ -13,3 +13,7 @@
   background-color: red;
   color: white;
 }
+
+td > .btn.active {
+    background-color: #286090 !important;
+}

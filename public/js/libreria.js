@@ -1,7 +1,8 @@
 /**
- *
- * @param {type} url
- * @param {type} formulario
+ * Enviar campos por el formulario seleccionado
+ * 
+ * @param {string} url
+ * @param {string} formulario
  * @returns {void}
  */
 function enviarFormulario(url, formulario)
@@ -28,9 +29,10 @@ function enviarFormulario(url, formulario)
 }
 
 /**
- *
- * @param {type} url
- * @param {type} formulario
+ * Obtiene los datos de una URL envíada
+ * 
+ * @param {string} url
+ * @param {string} token
  * @returns {void}
  */
 function enviarAccion(url, token)
@@ -43,7 +45,6 @@ function enviarAccion(url, token)
         {
             $('#modalinmueble .modal-body').html(data);
             $('.carousel').carousel();
-            //$('#modalinmueble').modal();
         }
     });
 }
@@ -90,6 +91,33 @@ function register()
       $('#phone-msj').html(msj.responseJSON.Phone);
     }
 });
+}
+
+/**
+ * Cambia los estados de los inmuebles
+ * 
+ * @param {string} url
+ * @param {string} token
+ * @param {int} identificacion Identificación del inmueble
+ * @returns {undefined}
+ */
+function cambiarEstadoInmueble(url, token, identificacion)
+{
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: { _token: token, identificacion: identificacion },
+        success: function(data)
+        {
+            try {
+                var jsonData = JSON.parse(data);
+                
+                $('#butt_esta' + identificacion).html(jsonData.estado);          // Estado del inmueble
+            } catch (e){
+                console.log(e.message);
+            }
+        }
+    });
 }
 
 /*function login()
