@@ -47,7 +47,7 @@ class DeseoController extends Controller
         $deseo = new \Ventas\Deseo();
         
         $deseo->inmu_iden = $id;
-        $deseo->usua_iden = 7;
+        $deseo->usua_iden = $request->user()->id;
         
         $deseo->save();
     }

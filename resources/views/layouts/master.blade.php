@@ -23,15 +23,13 @@
             <!-- if you want to keep the navbar hidden you can add this class to the navbar "navbar-burger"-->
             <div class="container">
                 <div class="navbar-header">
-                    <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
+<!--                    <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar bar1"></span>
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
-                    </button>
-                    <a href="#" class="navbar-brand">
-                       Arrendamos
-                    </a>
+                    </button>-->
+                    <a class="navbar-brand" href="{{url('/')}}">Arrendamos</a>
                 </div>
                 @if(Auth::check())
                   <div class="collapse navbar-collapse">
@@ -83,46 +81,47 @@
                 <!-- /.navbar-collapse -->
     <!-- form registrate-->
     <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h3 class="modal-title" id="myModalLabel">Registrate</h3>
-          </div>
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h3 class="modal-title" id="myModalLabel">Registrate</h3>
+                </div>
 
-    <div class="modal-body">
-    <form id='form-register' method='post'>
-      <input type="hidden" name="_token" value="{{csrf_token()}}" id='token'>
-      <div class="form-group">
-        <input id='name' name='name' type="text" class="form-control"  placeholder="Digite su Nombre">
-        <div id='name-msj' class="text-danger"></div>
-      </div>
-      <div class="form-group">
-        <input id='email' name='email' type="email" class="form-control"  placeholder="Digite su correo">
-        <div id='email-msj' class="text-danger"></div>
-      </div>
-      <div class="form-group">
-        <input type="password" id='password' name='password' class="form-control"  placeholder="Digite su Clave">
-        <div id='password-msj' class="text-danger"></div>
-      </div>
-      <div class="form-group">
-        <input id='address' name='address' type="text" class="form-control"  placeholder="Digite su Dirección">
-        <div id='address-msj' class="text-danger"></div>
-      </div>
-      <div class="form-group">
-        <input id='phone' name='phone' type="text" class="form-control"  placeholder="Digite su Teléfono">
-        <div id='phone-msj' class="text-danger"></div>
-      </div>
-      <div id='register-win' class="text-success"></div>
-      </div>
-      </form>
-          </div>
-          <div id='box-register' class="modal-footer">
-            <button id='btn-register' type="button" class="btn btn-default btn-border" data-dismiss="modal">Close</button>
-            <button id='btn' type="button" class="btn btn-danger btn-fill" onclick="register();">Registrarse</button>
+                <div class="modal-body">
+                    <form id='form-register' method='post'>
+                        <input type="hidden" name="_token" value="{{csrf_token()}}" id='token'>
+                        <div class="form-group">
+                            <input id='name' name='name' type="text" class="form-control"  placeholder="Digite su Nombre">
+                            <div id='name-msj' class="text-danger"></div>
+                        </div>
+                        <div class="form-group">
+                            <input id='email' name='email' type="email" class="form-control"  placeholder="Digite su correo">
+                            <div id='email-msj' class="text-danger"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id='password' name='password' class="form-control"  placeholder="Digite su Clave">
+                            <div id='password-msj' class="text-danger"></div>
+                        </div>
+                        <div class="form-group">
+                            <input id='address' name='address' type="text" class="form-control"  placeholder="Digite su Dirección">
+                            <div id='address-msj' class="text-danger"></div>
+                        </div>
+                        <div class="form-group">
+                            <input id='phone' name='phone' type="text" class="form-control"  placeholder="Digite su Teléfono">
+                            <div id='phone-msj' class="text-danger"></div>
+                        </div>
+                        <div id='register-win' class="text-success"></div>
+                    </form>
+                    <div id='box-register' class="modal-footer">
+                        <!--<button id='btn-register' type="button" class="btn btn-default btn-border" data-dismiss="modal">Close</button>-->
+                        <button id='btn' type="button" class="btn btn-danger btn-fill" onclick="register();">Registrarse</button>
+                    </div>
+                </div>
+            </div>
+            
           </div>
         </div>
-      </div>
     </div>
     <!-- form fin registrate-->
     <!-- form Iniciar Sesión-->
@@ -145,7 +144,7 @@
               <div id='password-msj-2' class="text-danger"></div>
             </div>
             <div id='box-register' class="modal-footer">
-              <button id='btn-register' type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <!--<button id='btn-register' type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
               <button id='btn' type="submit" class="btn btn-danger btn-fill">Acceder</button>
             </div>
           </form>

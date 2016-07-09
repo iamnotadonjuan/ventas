@@ -47,9 +47,9 @@
                 </div>
                 <div class="modal-body">
                 </div>
-                <div class="modal-footer">
+<!--                <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</button>
-                </div>
+                </div>-->
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
