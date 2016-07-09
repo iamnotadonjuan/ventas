@@ -40,14 +40,53 @@
   border: none;
 }
 
+td, th
+{
+  text-align: center;
+}
+
+td .btn-danger
+{
+  background-color: red;
+  color: white;
+  border: 1px solid white;
+}
+
+td .btn-danger:hover
+{
+  background-color: red;
+  color: white;
+  border: 1px solid white;
+}
+
+td .btn-primary
+{
+  background-color: blue;
+  color: white;
+  border: 1px solid white;
+}
+
+td .btn-primary:hover
+{
+  background-color: blue;
+  color: white;
+  border: 1px solid white;
+}
+
 .filter.filter-color-blue:before
 {
-    background: rgba(1, 87, 155, 0.7);
+    background: rgb(0, 0, 0);
 }
 
 td > .btn.active
 {
     background-color: #286090 !important;
+}
+
+h4, .h4
+{
+  background-color: transparent;
+  color: black;
 }
 
 

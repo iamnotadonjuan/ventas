@@ -62,8 +62,7 @@
                       </a>
                       <ul class="dropdown-menu">
                         <li><a href={{url('/')}}>Home</a></li>
-                        <li><a href={{url('auth/logout')}}>Mi perfil</a></li>
-                        <li role="separator" class="divider"></li>
+                        <li><a href={{url('/user')}}>Mi perfil</a></li>
                         <li><a href={{url('auth/logout')}}>Cerrar Sesión</a></li>
                       </ul>
                     </li>

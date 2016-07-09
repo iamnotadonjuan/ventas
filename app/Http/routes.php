@@ -20,6 +20,10 @@ Route::post('register', 'Auth\AuthController@postRegister');
 Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
+//reoute update user
+Route::resource('user', 'UsuarioController');
+Route::get('/users', 'UsuarioController@listing');
+
 Route::get('deseo/listar', 'DeseoController@index');
 Route::post('deseo/store/{id}', 'DeseoController@store');
 Route::get('deseo/destroy/{id}', 'DeseoController@destroy');

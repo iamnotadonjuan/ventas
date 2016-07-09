@@ -21,7 +21,7 @@ class DeseoController extends Controller
                         ->select('*')
                         ->where('inmuebles.usua_iden', '=', $request->user()->id)
                         ->orderBy('inmuebles.inmu_fech','desc')->paginate(10);
-        
+
         return view('listardeseos')->with('inmuebles', $inmuebles);
     }
 
@@ -45,10 +45,10 @@ class DeseoController extends Controller
     public function store(Request $request, $id)
     {
         $deseo = new \Ventas\Deseo();
-        
+
         $deseo->inmu_iden = $id;
         $deseo->usua_iden = 7;
-        
+
         $deseo->save();
     }
 
@@ -96,12 +96,12 @@ class DeseoController extends Controller
     {
         $deseo = \Ventas\Deseo::find($id);
         $deseo->delete();
-        
+
         return redirect('deseo/listar');
     }
-    
+
     public function listar()
     {
-        
+
     }
 }

@@ -43,9 +43,8 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dLabel">
                           <li>
-                            <li><a href={{url('/inmueble/create')}}>Registrar inmueble</a></li>
-                            <li><a href={{url('auth/logout')}}>Mi perfil</a></li>
-                            <li role="separator" class="divider"></li>
+                            <li><a href={{url('/inmueble/create')}}>Publicar inmueble</a></li>
+                            <li><a href={{url('/user')}}>Mi perfil</a></li>
                             <li><a href={{url('auth/logout')}}>Cerrar Sesión</a></li>
                           </li>
                         </ul>
