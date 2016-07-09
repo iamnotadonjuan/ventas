@@ -30,10 +30,13 @@ Route::get('deseo/destroy/{id}', 'DeseoController@destroy');
 
 Route::get('/', 'InmuebleController@index');
 Route::get('inmueble/create', 'InmuebleController@create');
+Route::get('inmueble/destroy/{id}', 'InmuebleController@destroy');
+Route::get('inmueble/edit/{id}', 'InmuebleController@edit');
+Route::get('inmueble/administrarinmuebles', 'InmuebleController@administrarInmuebles');
+Route::post('inmueble/cambiarestado', 'InmuebleController@cambiarEstado');
 Route::post('inmueble/store', 'InmuebleController@store');
 Route::post('inmueble/show/{id}', 'InmuebleController@show');
-Route::post('inmueble/cambiarestado', 'InmuebleController@cambiarEstado');
-Route::get('inmueble/administrarinmuebles', 'InmuebleController@administrarInmuebles');
+Route::post('inmueble/update/{id}', 'InmuebleController@update');
 
 Route::post('inmueblefoto/store', 'InmuebleFotoController@store');
 Route::post('inmueblefoto/destroy/{id}', 'InmuebleFotoController@destroy');

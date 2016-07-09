@@ -97,7 +97,15 @@ class InmuebleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $inmuebles = DB::table('inmuebles')
+                        ->select('*')
+                        ->where('inmuebles.inmu_iden', '=', $id)->get();
+        
+        $inmueblesFotos = DB::table('inmuebles_fotos')
+                        ->select('*')
+                        ->where('inmuebles_fotos.inmu_iden', '=', $id)->get();
+                
+        return view('forminmueble')->with('inmuebles', $inmuebles)->with('inmueblesfotos', $inmueblesFotos);
     }
 
     /**
@@ -110,6 +118,31 @@ class InmuebleController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $inmueble = \Ventas\Inmueble::find($id);
+        $inmueble->inmu_nomb = $request->text_nomb;
+        $inmueble->inmu_desc = $request->tear_desc;
+        $inmueble->inmu_valo = $request->text_valo;
+        $inmueble->inmu_tine = $request->radi_tipo;
+        $inmueble->inmu_npla = $request->numb_npla;
+        $inmueble->inmu_fech = $request->date_fech;
+        $inmueble->inmu_nhab = $request->numb_habi;
+        $inmueble->inmu_nban = $request->numb_bano;
+        $inmueble->inmu_npar = $request->numb_parq;
+        $inmueble->inmu_npis = $request->numb_piso;
+        $inmueble->inmu_m2c  = $request->numb_m2c;
+        $inmueble->inmu_m2nc = $request->numb_m2nc;
+        $inmueble->inmu_terr = (!isset($request->chec_terr)) ? false : true;
+        $inmueble->inmu_estr = $request->sele_estr;
+        $inmueble->inmu_agua = (!isset($request->chec_agua)) ? false : true;
+        $inmueble->inmu_luz  = (!isset($request->chec_ener)) ? false : true;
+        $inmueble->inmu_gas  = (!isset($request->chec_gas)) ? false : true;
+        $inmueble->inmu_tele = (!isset($request->chec_tele)) ? false : true;
+        $inmueble->inmu_bbq  = (!isset($request->chec_bbq)) ? false : true;
+        $inmueble->inmu_prop = $request->radi_prop;
+        $inmueble->inmu_feed = date("Y-m-d");
+        $inmueble->usua_iden = $request->user()->id;
+        
+        $inmueble->save();
     }
 
     /**
@@ -121,6 +154,10 @@ class InmuebleController extends Controller
     public function destroy($id)
     {
         //
+        $inmueble = \Ventas\Inmueble::find($id);
+        $inmueble->delete();
+        
+        return redirect('inmueble/administrarinmuebles');
     }
     
     /**

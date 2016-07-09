@@ -454,11 +454,11 @@
 									.appendTo(appendTo);
 								l.on('click', n.templates._selectors.remove, function(e) {
 									e.preventDefault();
-									var cf = n.templates.removeConfirmation ? confirm(n.captions.removeConfirmation) : true;
-									if(cf) {
+//									var cf = n.templates.removeConfirmation ? confirm(n.captions.removeConfirmation) : true;
+//									if(cf) {
 										f._remove(params ? params.remove.event : e, params ? params.remove.el : $(this)
 											.closest(n.templates._selectors.item));
-									}
+//									}
 								});
 							}
 							for(var i = 0; i < f.files.length; i++) {

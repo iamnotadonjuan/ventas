@@ -12,12 +12,14 @@
                 <p class="description">{{$inmueble->inmu_nomb}}</p>
 
                 @if(Auth::check())
-                    <a style="cursor: pointer" onclick="enviarAccion('{{ url('deseo/store') }}/{{$inmueble->inmu_iden}}','{{ csrf_token() }}');" class="btn-fill">
+                    <a style="cursor: pointer" onclick="enviarAccion('{{ url('deseo/store') }}/{{$inmueble->inmu_iden}}','{{ csrf_token() }}');" class="btn-fill" id="a_anad{{ $inmueble->inmu_iden }}">
                         <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos
                     </a>
+                
+                <!--glyphicon glyphicon-heart-->
                     <br/><br/>
                 @endif
-                <a class="btn btn-danger btn-fill" data-toggle="modal" data-target="#modalinmueble" onclick="enviarAccion('{{url('inmueble/show', [$inmueble->inmu_iden])}}', '{{csrf_token()}}');">Ver Más</a>
+                <a class="btn btn-danger btn-fill" data-toggle="modal" data-target="#modalinmueble" onclick="enviarAccion('{{url('inmueble/show', [$inmueble->inmu_iden])}}', '{{csrf_token()}}');  $('#butt_anad').unbind('click').on('click', function(){ $('#a_anad{{ $inmueble->inmu_iden }}').trigger('click'); })">Ver Más</a>
             </div>
         </div>
     @endforeach
@@ -34,7 +36,7 @@
                 </div>
                 @if(Auth::check())
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" id="butt_anad"><i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</button>
                     </div>
                 @endif
             </div><!-- /.modal-content -->

@@ -33,7 +33,8 @@ class AuthController extends Controller
      *
      * @var string
      */
-    protected $redirectPath = '/inmueble/create';
+    protected $redirectCliente = '/deseo/listar';
+    protected $redirectAdministrador = '/inmueble/administrarinmuebles';
 
     /**
      * Create a new authentication controller instance.
@@ -73,8 +74,12 @@ class AuthController extends Controller
             ]
 
             )){
-          
-            return redirect()->intended($this->redirectPath());
+            
+            if (auth()->user()->tius_iden == 1) {
+                return redirect()->intended($this->redirectAdministrador);
+            } else {
+                return redirect()->intended($this->redirectCliente);
+            }
         } else {
             $rules = [
                 'email' => 'required|email',

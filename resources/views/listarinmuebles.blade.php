@@ -37,8 +37,11 @@
                             </a>
                             
                             @if(Auth::user()->tius_iden == 2)
-                                <a style="cursor: pointer" data-toggle="modal" data-target="#modalinmueble" onclick="enviarAccion('{{url('inmueble/show', [$inmueble->inmu_iden])}}', '{{csrf_token()}}');">
+                                <a style="cursor: pointer" href="{{url('inmueble/edit', [$inmueble->inmu_iden])}}">
                                     <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                </a>
+                                <a style="cursor: pointer" href="{{url('inmueble/destroy', [$inmueble->inmu_iden])}}">
+                                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                 </a>
                             @endif
                         </td>
@@ -60,9 +63,9 @@
                 </div>
                 <div class="modal-body">
                 </div>
-                <div class="modal-footer">
+<!--                <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</button>
-                </div>
+                </div>-->
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
