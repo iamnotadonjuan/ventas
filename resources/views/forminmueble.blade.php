@@ -142,7 +142,7 @@
             </div>
             <div id="div_imag" class="row" style="display: none;">
                 <form>
-                    <input type="hidden" name="hidd_idin" id="hidd_idin" value="0">
+                    <input type="hidden" name="hidd_idin" id="hidd_idin" value="<?php echo (isset($inmueble)) ? $inmueble->inmu_iden : '0' ?>">
                     <input type="file" name="file_imag" id="filer_input" multiple="multiple">
 
                     <a class="btn btn-primary" href="{{ url('inmueble/administrarinmuebles') }}">Publicar</a>
@@ -224,7 +224,7 @@
                                                         <li><span class="jFiler-item-others">@{{fi-icon}}</span></li>\
                                                     </ul>\
                                                     <ul class="list-inline pull-right">\
-                                                        <li><a class="icon-jfi-trash jFiler-item-trash-action"></a></li>\
+                                                        <li><a class="icon-jfi-trash jFiler-item-trash-action" onclick="alert(@{{fi-name}});"></a></li>\
                                                     </ul>\
                                                 </div>\
                                             </div>\
@@ -282,21 +282,20 @@
                         statusCode: null,
                         onProgress: null,
                         onComplete: null
-                    },
-                    files: [
-                        {
-                            name: "appended_file.jpg",
-                            size: 5453,
-                            type: "image/jpg",
-                            file: "http://dummyimage.com/720x480/f9f9f9/191a1a.jpg"
-                        },
-                        {
-                            name: "appended_file_2.jpg",
-                            size: 9453,
-                            type: "image/jpg",
-                            file: "http://dummyimage.com/640x480/f9f9f9/191a1a.jpg"
-                        }
-                    ]
+                    }
+                    @if (isset($inmueblesfotos))
+                        ,
+                        files: [
+                            <?php foreach($inmueblesfotos as $inmueblefotos): ?>
+                                {
+                                    name: "{{$inmueblefotos->info_iden}}",
+                                    size: 5453,
+                                    type: "image/jpg",
+                                    file: "/ventas/storage/app/{{$inmueblefotos->info_foto}}"
+                                },
+                            <?php endforeach; ?>
+                        ]
+                    @endif
                 });
 
             });
