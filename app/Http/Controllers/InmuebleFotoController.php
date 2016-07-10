@@ -94,7 +94,7 @@ class InmuebleFotoController extends Controller
     public function destroy($id)
     {
         //
-        $inmuebleFoto = new \Ventas\InmuebleFoto();
-        $inmuebleFoto->destroy($id);
+        $inmuebleFoto = \Ventas\InmuebleFoto::find($id);
+        $inmuebleFoto->delete();
     }
 }

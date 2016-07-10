@@ -15,11 +15,19 @@ class InmuebleController extends Controller
      */
     public function index()
     {
-        $inmuebles = DB::table('inmuebles')
-                        ->join('inmuebles_fotos', 'inmuebles_fotos.inmu_iden', '=', 'inmuebles.inmu_iden')
-                        ->select('*')
-                        ->where('inmuebles.inmu_est', '=', 'Activo')
-                        ->groupBy('inmuebles.inmu_iden')->orderBy('inmuebles.inmu_fech','desc')->take(8)->get();
+        if (auth()->check()) {
+            $inmuebles = DB::table('inmuebles')
+                            ->join('inmuebles_fotos', 'inmuebles_fotos.inmu_iden', '=', 'inmuebles.inmu_iden')
+                            ->select('*')
+                            ->where('inmuebles.inmu_est', '=', 'Activo')->where('inmuebles.usua_iden', '!=', auth()->user()->id)
+                            ->groupBy('inmuebles.inmu_iden')->orderBy('inmuebles.inmu_fech','desc')->take(8)->get();
+        }else{
+            $inmuebles = DB::table('inmuebles')
+                            ->join('inmuebles_fotos', 'inmuebles_fotos.inmu_iden', '=', 'inmuebles.inmu_iden')
+                            ->select('*')
+                            ->where('inmuebles.inmu_est', '=', 'Activo')
+                            ->groupBy('inmuebles.inmu_iden')->orderBy('inmuebles.inmu_fech','desc')->take(8)->get();
+        }
 
         return view('inicio')->with('inmuebles', $inmuebles);
     }
@@ -204,5 +212,72 @@ class InmuebleController extends Controller
         $inmueble->save();
 
         echo json_encode(array("estado" => $estado));
+    }
+    
+    /**
+     * Filtrar los inmuebles disponibles
+     * 
+     * @param Request $request
+     */
+    public function buscar(Request $request)
+    {
+        $tipo     = $request->sele_tipo;
+        $entreUno = $request->text_ent1;
+        $entreDos = $request->text_ent2;
+        $palabra  = $request->text_pala;
+        
+        // Condiciones
+        if($entreUno < 0 || $entreDos < 0 || ($entreUno > $entreDos) || 
+                $entreUno == "" || $entreDos == ""){
+            $entreUno = 0;
+            $entreDos = 9999999999;
+        }
+        
+        // Consulta
+        if (auth()->check()) {
+            if (empty($palabra)) {
+                $inmuebles = DB::table('inmuebles')
+                                ->join('inmuebles_fotos', 'inmuebles_fotos.inmu_iden', '=', 'inmuebles.inmu_iden')
+                                ->select('*')
+                                ->where('inmuebles.inmu_est', '=', 'Activo')
+                                ->where('inmuebles.usua_iden', '!=', auth()->user()->id)
+                                ->where('inmuebles.inmu_tine', '=', $tipo)
+                                ->whereBetween('inmuebles.inmu_valo', [$entreUno, $entreDos])
+                                ->groupBy('inmuebles.inmu_iden')->orderBy('inmuebles.inmu_fech','desc')->get();
+            }else{
+                $inmuebles = DB::table('inmuebles')
+                                ->join('inmuebles_fotos', 'inmuebles_fotos.inmu_iden', '=', 'inmuebles.inmu_iden')
+                                ->select('*')
+                                ->where('inmuebles.inmu_est', '=', 'Activo')
+                                ->where('inmuebles.usua_iden', '!=', auth()->user()->id)
+                                ->where('inmuebles.inmu_tine', '=', $tipo)
+                                ->Where('inmuebles.inmu_nomb', 'like', "%$palabra%")
+                                ->Where('inmuebles.inmu_desc', 'like', "%$palabra%")
+                                ->whereBetween('inmuebles.inmu_valo', [$entreUno, $entreDos])
+                                ->groupBy('inmuebles.inmu_iden')->orderBy('inmuebles.inmu_fech','desc')->get();
+            }
+        }else{
+            if (empty($palabra)) {
+                $inmuebles = DB::table('inmuebles')
+                                ->join('inmuebles_fotos', 'inmuebles_fotos.inmu_iden', '=', 'inmuebles.inmu_iden')
+                                ->select('*')
+                                ->where('inmuebles.inmu_est', '=', 'Activo')
+                                ->where('inmuebles.inmu_tine', '=', $tipo)
+                                ->whereBetween('inmuebles.inmu_valo', [$entreUno, $entreDos])
+                                ->groupBy('inmuebles.inmu_iden')->orderBy('inmuebles.inmu_fech','desc')->get();
+            }else{
+                $inmuebles = DB::table('inmuebles')
+                                ->join('inmuebles_fotos', 'inmuebles_fotos.inmu_iden', '=', 'inmuebles.inmu_iden')
+                                ->select('*')
+                                ->where('inmuebles.inmu_est', '=', 'Activo')
+                                ->where('inmuebles.inmu_tine', '=', $tipo)
+                                ->Where('inmuebles.inmu_nomb', 'like', "%$palabra%")
+                                ->Where('inmuebles.inmu_desc', 'like', "%$palabra%")
+                                ->whereBetween('inmuebles.inmu_valo', [$entreUno, $entreDos])
+                                ->groupBy('inmuebles.inmu_iden')->orderBy('inmuebles.inmu_fech','desc')->get();
+            }
+        }
+
+        return view('inicio')->with('inmuebles', $inmuebles);
     }
 }

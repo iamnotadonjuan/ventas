@@ -162,35 +162,52 @@
                 <div class="container">
                     <div class="content">
                         <div class="title-area">
-                            <p id='encuentra'>Encuentra</p>
-                            <h1 class="title-modern">Inmuebles</h1>
-                            <h3 id='title-search'>Inicia tu busqueda aquí</h2>
-                            <div class="row">
-                             <div class="col-md-6">
-                             <label>Tipo de inmueble:</label>
-                             <select id="inmueble" name="inmueble" class="form-control">
-                                <option selected="selected" value="">Todos</option>
-                                </select>
-                            </div>
-                             <div class="col-md-6">
-                              <label>operación:</label>
-                             <select id="operacion" name="operacion" class="form-control">
-                            <option selected="selected" value="">Todos</option>
-                            </select></div>
-                            </div>
+                            <form id="form_busq" method="post" action="{{ url('inmueble/buscar') }}">
+                                <p id='encuentra'>Encuentra</p>
+                                <h1 class="title-modern">Inmuebles</h1>
+                                <h3 id='title-search'>Inicia tu busqueda aquí</h2>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Busco inmueble en:</label>
+                                        <select id="sele_tipo" name="sele_tipo" class="form-control">
+                                            <option selected="selected" value="Arriendo">Arriendo</option>
+                                            <option value="Venta">Venta</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="col-md-12">
+                                            <label>Entre:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">$</div>
+                                                <input type="text" name="text_ent1" id="text_ent1" class="form-control col-md-3 text-right" placeholder="0.00">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">$</div>
+                                                <input type="text" name="text_ent2" id="text_ent2" class="form-control col-md-3 text-right" placeholder="0.00">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                           <div class="row">
-                           <div class="col-md-12">
-                              <label>Buscar por palabra:</label>
-                             <input type="text" name="palabra" class="form-control">
-                             </div>
-                            </div>
-                          <!--  <div class="separator line-separator">♦</div> -->
-                          <div class="button-get-started">
-                              <a href="#" target="_blank" class="btn btn-danger btn-fill btn-lg ">
-                                  Buscar
-                              </a>
-                          </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <label>Buscar por palabra:</label>
+                                        <input type="text" name="text_pala" id="text_pala" class="form-control">
+                                    </div>
+                                </div>
+
+                                <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                <div class="button-get-started">
+                                    <!--onclick="buscarInmueble('{{ url('inmueble/buscar') }}', '{{csrf_token()}}', '#form_busq')"-->
+                                    <button class="btn btn-danger btn-fill btn-lg " type="submit">
+                                        Buscar
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -206,155 +223,8 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row" id="div_inmu">
                     @yield('inmuebles')
-<!--                    <div class="col-md-3">
-
-                        <div class="info-icon">
-                        <h4>Arriendo</h4>
-                            <div class="img">
-                              <img src="<?php echo asset('img/casas/casa_01.png') ?>" alt="..." class="img-rounded img-responsive">
-                            </div>
-                            <h3>Área: 2000 M<sup>2</sup></h3>
-                            <p class="description">Santa Cruz Conjunto Cerrado.</p>
-
-                            <a href="#" class="btn-fill">
-                            <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</a><br/><br/>
-
-                            <a href="#" class="btn btn-danger btn-fill">Ver Más</a>
-
-
-                        </div>
-                    </div>
-
-                     <div class="col-md-3">
-
-                        <div class="info-icon">
-                        <h4>Arriendo</h4>
-                            <div class="img">
-                              <img src="<?php echo asset('img/casas/casa_01.png')?>" alt="..." class="img-rounded img-responsive">
-                            </div>
-                            <h3>Área: 20 M<sup>2</sup></h3>
-                            <p class="description">Santa Cruz Conjunto Cerrado.</p>
-
-                            <a href="#" class="btn-fill">
-                            <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</a><br/><br/>
-
-                            <a href="#" class="btn btn-danger btn-fill">Ver Más</a>
-
-                        </div>
-                    </div>
-
-
-
-                <div class="col-md-3">
-
-                        <div class="info-icon">
-                        <h4>Arriendo</h4>
-                            <div class="img">
-                              <img src="<?php echo asset('img/casas/casa_01.png') ?>" alt="..." class="img-rounded img-responsive">
-                            </div>
-                            <h3>Área: 20 M<sup>2</sup></h3>
-                            <p class="description">Santa Cruz Conjunto Cerrado.</p>
-
-                            <a href="#" class="btn-fill">
-                            <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</a><br/><br/>
-
-                            <a href="#" class="btn btn-danger btn-fill">Ver Más</a>
-
-
-                        </div>
-                    </div>
-
-                     <div class="col-md-3">
-
-                        <div class="info-icon">
-                        <h4>Arriendo</h4>
-                            <div class="img">
-                              <img src="<?php echo asset('img/casas/casa_01.png') ?>" alt="..." class="img-rounded img-responsive">
-                            </div>
-                            <h3>Área:20 M<sup>2</sup></h3>
-                            <p class="description">Santa Cruz Conjunto Cerrado.</p>
-
-                            <a href="#" class="btn-fill">
-                            <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</a><br/><br/>
-
-                            <a href="#" class="btn btn-danger btn-fill">Ver Más</a>
-
-
-                        </div>
-                    </div>
-                </div>-->
-
-<!--    <div class="row">
-                    <div class="col-md-3">
-                        <div class="info-icon">
-                        <h4>Arriendo</h4>
-                            <div class="img">
-                              <img src="<?php echo asset('img/casas/casa_01.png') ?>" alt="..." class="img-rounded img-responsive">
-                            </div>
-                            <h3>Área: 2000 M<sup>2</sup></h3>
-                            <p class="description">Santa Cruz Conjunto Cerrado.</p>
-
-                            <a href="#" class="btn-fill">
-                            <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</a><br/><br/>
-
-                            <a href="#" class="btn btn-danger btn-fill">Ver Más</a>
-                        </div>
-                    </div>
-
-                     <div class="col-md-3">
-
-                        <div class="info-icon">
-                        <h4>Arriendo</h4>
-                            <div class="img">
-                              <img src="<?php echo asset('img/casas/casa_01.png') ?>" alt="..." class="img-rounded img-responsive">
-                            </div>
-                            <h3>Área: 20 M<sup>2</sup></h3>
-                            <p class="description">Santa Cruz Conjunto Cerrado.</p>
-
-                            <a href="#" class="btn-fill">
-                            <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</a><br/><br/>
-
-                            <a href="#" class="btn btn-danger btn-fill">Ver Más</a>
-
-
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="info-icon">
-                        <h4>Arriendo</h4>
-                            <div class="img">
-                              <img src="<?php echo asset('img/casas/casa_01.png')?>" alt="..." class="img-rounded img-responsive">
-                            </div>
-                            <h3>Área: 20 M<sup>2</sup></h3>
-                            <p class="description">Santa Cruz Conjunto Cerrado.</p>
-
-                            <a href="#" class="btn-fill">
-                            <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</a><br/><br/>
-
-                            <a href="#" class="btn btn-danger btn-fill">Ver Más</a>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3">
-                        <div class="info-icon">
-                        <h4>Arriendo</h4>
-                            <div class="img">
-                              <img src="<?php echo asset('img/casas/casa_01.png') ?>" alt="..." class="img-rounded img-responsive">
-                            </div>
-                            <h3>Área:20 M<sup>2</sup></h3>
-                            <p class="description">Santa Cruz Conjunto Cerrado.</p>
-
-                            <a href="#" class="btn-fill">
-                            <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</a><br/><br/>
-
-                            <a href="#" class="btn btn-danger btn-fill">Ver Más</a>
-
-
-                        </div>
-                    </div>-->
                 </div>
             </div>
         </div>
@@ -551,6 +421,7 @@
         <script type="text/javascript" src="<?php echo asset('js/gaia.js')?> "></script>
 
         <!-- file where we handle consults in server by ajax -->
-        <script type="text/javascript" src='js/libreria.js'></script>
+        <!--<script type="text/javascript" src='js/libreria.js'></script>-->
+        <script src="<?php echo asset('/js/libreria.js') ?>"></script>
     </body>
 </html>

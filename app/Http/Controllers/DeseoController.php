@@ -103,4 +103,19 @@ class DeseoController extends Controller
     {
 
     }
+    
+    /**
+     * Listar las ofertas seleccionadas por clientes interesados
+     */
+    public function listarOferta(Request $request)
+    {
+        $ofertas = DB::table('inmuebles')
+                        ->join('lista_deseos', 'lista_deseos.inmu_iden', '=', 'inmuebles.inmu_iden')
+                        ->join('usuarios', 'usuarios.id', '=', 'lista_deseos.usua_iden')
+                        ->select('usuarios.*')
+                        ->where('inmuebles.usua_iden', '=', $request->user()->id)
+                        ->orderBy('inmuebles.inmu_fech','desc')->paginate(10);
+
+        return view('listarofertas')->with('ofertas', $ofertas);
+    }
 }

@@ -169,5 +169,5 @@
     <script type="text/javascript" src="<?php echo asset('js/gaia.js')?> "></script>
 
     <!-- file where we handle consults in server by ajax -->
-    <script type="text/javascript" src='js/libreria.js'></script>
+<!--    <script type="text/javascript" src='js/libreria.js'></script>-->
 </html>

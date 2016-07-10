@@ -1,6 +1,10 @@
 @extends('layouts.autenticado')
 
 @section('contenido')
+    <ol class="breadcrumb">
+        <li class="active"><a href="{{url('inmueble/administrarinmuebles')}}">Mis publicaciones</a></li>
+        <li><a href="{{url('deseo/listarofertas')}}">Ofertas</a></li>
+    </ol>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead
@@ -63,9 +67,6 @@
                 </div>
                 <div class="modal-body">
                 </div>
-<!--                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos</button>
-                </div>-->
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->

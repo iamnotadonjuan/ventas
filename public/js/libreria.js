@@ -120,6 +120,30 @@ function cambiarEstadoInmueble(url, token, identificacion)
     });
 }
 
+/**
+ * 
+ * @param {string} url
+ * @param {string} token
+ * @returns {void}
+ */
+function buscarInmueble(url, token, formulario)
+{
+    var data = new FormData($(formulario)[0]);
+    data.append("_token", token);
+    
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: data,
+        processData: false,
+        contentType: false,
+        success: function(data)
+        {
+            $('#div_inmu').html(data);
+        }
+    });
+}
+
 /*function login()
 {
   $("#email-msj-2,#password-msj-2").fadeIn();
