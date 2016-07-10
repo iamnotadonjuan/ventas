@@ -135,8 +135,7 @@ small,
 }
 
 a {
-  color: #777777;
-  opacity: .7;
+
   font-size: 14px;
 }
 a:hover {
@@ -225,6 +224,7 @@ a:hover {
 
 .img img{
 width:100%;
+min-height: 175px;
 
 }
 

@@ -105,6 +105,16 @@ td .btn-primary
   border: 1px solid white;
 }
 
+.item img, .item{
+    
+    border-radius: 5px;
+}
+
+span.valor{
+    font-size: 1.3em;
+    color: #01579B;
+}
+
 td .btn-primary:hover
 {
   background-color: blue;

@@ -69,7 +69,7 @@
                 <strong>Valor</strong>
             </div>
             <div class="col-md-8">
-                ${{$inmueble->inmu_valo}}
+                <span class="valor"> ${{$inmueble->inmu_valo}}</span>
             </div>
         </div>    
             

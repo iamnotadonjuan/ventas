@@ -28,25 +28,28 @@
     </head>
     <body>
         <!-- menu -->
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-dark bg-inverse">
             <div class="container-fluid">
               <div class="navbar-header">
                 <a class="navbar-brand" href="{{url('/')}}">Arrendamos</a>
               </div>
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav nav-pills">
                     @if(Auth::user()->tius_iden == 1)
-                        <li class="active">
+                        <li role="presentation" class="active">
                             <a href="{{url('inmueble/administrarinmuebles')}}">Administrar inmuebles <span class="sr-only">(current)</span></a>
                         </li>
                     @else
-                        <li>
+                    
+                    
+                        <li role="presentation" class="{{ Request::is('deseo/listar') ? 'active' : '' }}">
                             <a href="{{url('deseo/listar')}}">Mi lista de deseos<span class="sr-only">(current)</span></a>
                         </li>
-                        <li>
+                        
+                        <li role="presentation" class="{{ Request::is('inmueble/administrarinmuebles') ? 'active' : '' }}"> 
                             <a href="{{url('inmueble/administrarinmuebles')}}">Mis publicaciones<span class="sr-only">(current)</span></a>
                         </li>
-                        <li>
+                        <li role="presentation" class="{{ Request::is('inmueble/create') ? 'active' : '' }}">
                             <a href="{{url('inmueble/create')}}">Crear publicacion<span class="sr-only">(current)</span></a>
                         </li>
                     @endif
