@@ -6,7 +6,7 @@
             <div class="info-icon">
             <h4>{{$inmueble->inmu_tine}}</h4>
                 <div class="img">
-                  <img src="../storage/app/{{$inmueble->info_foto}}" alt="..." class="img-rounded img-responsive">
+                  <img src="{{url('/')}}/../storage/app/{{$inmueble->info_foto}}" alt="..." class="img-rounded img-responsive">
                 </div>
                 <h3>Área: {{$inmueble->inmu_m2c}} M<sup>2</sup></h3>
                 <p class="description">{{$inmueble->inmu_nomb}}</p>
@@ -15,8 +15,6 @@
                     <a style="cursor: pointer" onclick="enviarAccion('{{ url('deseo/store') }}/{{$inmueble->inmu_iden}}','{{ csrf_token() }}');" class="btn-fill" id="a_anad{{ $inmueble->inmu_iden }}">
                         <i class="fa fa-heart-o fa-lg"></i> Añadir a la lista de deseos
                     </a>
-                
-                <!--glyphicon glyphicon-heart-->
                     <br/><br/>
                 @endif
                 <a class="btn btn-danger btn-fill" data-toggle="modal" data-target="#modalinmueble" onclick="enviarAccion('{{url('inmueble/show', [$inmueble->inmu_iden])}}', '{{csrf_token()}}');  $('#butt_anad').unbind('click').on('click', function(){ $('#a_anad{{ $inmueble->inmu_iden }}').trigger('click'); })">Ver Más</a>

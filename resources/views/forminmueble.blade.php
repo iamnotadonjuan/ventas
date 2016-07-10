@@ -224,7 +224,7 @@
                                                         <li><span class="jFiler-item-others">@{{fi-icon}}</span></li>\
                                                     </ul>\
                                                     <ul class="list-inline pull-right">\
-                                                        <li><a class="icon-jfi-trash jFiler-item-trash-action" onclick="alert(@{{fi-name}});"></a></li>\
+                                                        <li><a class="icon-jfi-trash jFiler-item-trash-action" onclick="enviarAccion(\'{{ url("inmueblefoto/destroy") }}/@{{fi-name}}\', \'{{csrf_token()}}\'); alert(@{{fi-name}});"></a></li>\
                                                     </ul>\
                                                 </div>\
                                             </div>\
