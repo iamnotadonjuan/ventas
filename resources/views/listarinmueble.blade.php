@@ -1,22 +1,24 @@
 <div id="carousel-fotos" class="carousel slide" data-ride="carousel">
      <!-- Indicators -->
     <ol class="carousel-indicators">
-        {{ $i = 0 }}
+        <?php $i = 0 ?>
         @foreach ($inmuebles as $inmueble)
-            <li data-target="#carousel-example-generic" data-slide-to="{{$i}}" class="active"></li>
-            {{ $i++ }}
+            <li data-target="#carousel-example-generic" data-slide-to="{{$i}}" <?php echo ($i == 0) ? 'class="active"' : '' ?>></li>
+            <?php $i++ ?>
         @endforeach
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
+        <?php $i = 0 ?>
         @foreach ($inmuebles as $inmueble)
-            <div class="item active">
+            <div class="item  <?php echo ($i == 0) ? 'active' : ''?>">
                 <img src="/ventas/storage/app/{{$inmueble->info_foto}}" alt="...">
                 <div class="carousel-caption">
                     {{$inmueble->info_foto}}
                 </div>
             </div>
+            <?php $i++ ?>
         @endforeach
     </div>
 
@@ -176,4 +178,5 @@
             </div>
         </div>
     </div>
+    <?php break; ?>
 @endforeach
