@@ -76,7 +76,7 @@
     font-weight: bold;
     color: #8d9496;
     border-radius: 3px;
-    border: 1px solid #c6c6c6;
+    border: 1px solid transparent;
     vertical-align: middle;
     background-color: #fff;
     box-shadow: 0px 1px 5px rgba(0,0,0,0.05);
