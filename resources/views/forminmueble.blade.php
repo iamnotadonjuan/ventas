@@ -6,92 +6,89 @@
         @endif
     
         <div class="container">
+            
             <div class="row" id="div_form">
+                
+                <h2>Escribe la información del Inmueble</h2>
+                
                 <form id="form_inmu" class="form-horizontal">
+                    
                     @if (isset($inmuebles))
                     <input type="hidden" name="hidd_iden" id="hidd_iden" value="{{$inmueble->inmu_iden}}" >
                     @endif
                     
                     <div class="form-group">
-                        <label for="text_nomb" class="col-md-2 control-label">Nombre</label>
-                        <div class="col-md-10">
+                        <label for="text_nomb" class="col-md-1 control-label">Nombre</label>
+                        <div class="col-md-3">
                             <input type="text" name="text_nomb" id="text_nomb" placeholder="Nombre" class="form-control" value="<?php echo (isset($inmueble)) ? $inmueble->inmu_nomb : '' ?>">
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="tear_desc" class="col-md-2 control-label">Descripción</label>
-                        <div class="col-md-10">
+                   
+                        <label for="tear_desc" class="col-md-1 control-label">Descripción</label>
+                        <div class="col-md-3">
                             <textarea name="tear_desc" id="tear_desc" placeholder="Descripción" class="form-control"><?php echo (isset($inmueble)) ? $inmueble->inmu_desc : '' ?></textarea>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="text_valo" class="col-md-2 control-label">Valor</label>
-                        <div class="col-md-10">
+                 
+                        <label for="text_valo" class="col-md-1 control-label">Valor</label>
+                        <div class="col-md-3">
                             <div class="input-group">
                                 <div class="input-group-addon">$</div>
                                 <input type="text" name="text_valo" id="text_valo" placeholder="0.00" class="form-control text-right" value="<?php echo (isset($inmueble)) ? $inmueble->inmu_valo : '' ?>">
                             </div>
                         </div>
                     </div>
+                    
+
+                    
+                    
                     <div class="form-group">
-                        <label for="text_valo" class="col-md-2 control-label">Tipo</label>
-                        <div class="col-md-4">
-                            <label class="radio-inline">
-                                <input type="radio" name="radi_tipo" checked="true" value="Arriendo" <?php echo (isset($inmueble) && $inmueble->inmu_tine == 'Arriendo') ? 'checked=\'true\'' : '' ?>>Arriendo
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="radi_tipo" value="Venta" <?php echo (isset($inmueble) && $inmueble->inmu_tine == 'Venta') ? 'checked=\'true\'' : '' ?>>Venta
-                            </label>
-                        </div>
-                        <label for="text_valo" class="col-md-2 control-label">¿Para?</label>
-                        <div class="col-md-4">
-                            <label class="radio-inline">
-                                <input type="radio" name="radi_prop" checked="true" value="Oferta" <?php echo (isset($inmueble) && $inmueble->inmu_prop == 'Oferta') ? 'checked=\'true\'' : '' ?>>Oferta
-                            </label>
-                            <label class="checkbox-inline">
-                                <input type="radio" name="radi_prop" value="Demanda" <?php echo (isset($inmueble) && $inmueble->inmu_prop == 'Demanda') ? 'checked=\'true\'' : '' ?>>Demanda
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="numb_npla" class="col-md-2 control-label">Número de planchas</label>
-                        <div class="col-md-2">
+                        <label for="numb_npla" class="col-md-1 control-label">Nº de planchas</label>
+                        <div class="col-md-3">
                             <input type="number" name="numb_npla" id="numb_npla" placeholder="1" class="form-control" value="<?php echo (isset($inmueble)) ? $inmueble->inmu_npla : '' ?>">
                         </div>
-                        <label for="date_fech" class="col-md-2 control-label">Fecha</label>
-                        <div class="col-md-2">
+                        <label for="date_fech" class="col-md-1 control-label">Fecha</label>
+                        <div class="col-md-3">
                             <input type="date" name="date_fech" id="date_fech" class="form-control" placeholder="dd/mm/aaaa" value="<?php echo (isset($inmueble)) ? $inmueble->inmu_feed : '' ?>">
                         </div>
-                        <label for="numb_habi" class="col-md-2 control-label">Habitaciones</label>
-                        <div class="col-md-2">
+                        <label for="numb_habi" class="col-md-1 control-label">Alcobas</label>
+                        <div class="col-md-3">
                             <input type="number" name="numb_habi" id="numb_habi" placeholder="1" class="form-control" value="<?php echo (isset($inmueble)) ? $inmueble->inmu_nhab : '' ?>">
                         </div>
+                   
                     </div>
+                    
+                    
                     <div class="form-group">
-                        <label for="numb_bano" class="col-md-2 control-label">Número de baños</label>
-                        <div class="col-md-2">
+                        
+                        <label for="numb_bano" class="col-md-1 control-label">Nº de baños</label>
+                        <div class="col-md-3">
                             <input type="number" name="numb_bano" id="numb_bano" placeholder="1" class="form-control" value="<?php echo (isset($inmueble)) ? $inmueble->inmu_nban : '' ?>">
                         </div>
-                        <label for="numb_parq" class="col-md-2 control-label">Número de parqueaderos</label>
-                        <div class="col-md-2">
+                        
+                        <label for="numb_parq" class="col-md-1 control-label">Nº de garajes</label>
+                        <div class="col-md-3">
                             <input type="number" name="numb_parq" id="numb_parq" placeholder="1" class="form-control" value="<?php echo (isset($inmueble)) ? $inmueble->inmu_npar : '' ?>">
                         </div>
-                        <label for="numb_piso" class="col-md-2 control-label">Número de pisos</label>
-                        <div class="col-md-2">
+                        <label for="numb_piso" class="col-md-1 control-label">Nº de pisos</label>
+                        <div class="col-md-3">
                             <input type="number" name="numb_piso" id="numb_piso" placeholder="1" class="form-control" value="<?php echo (isset($inmueble)) ? $inmueble->inmu_npis : '' ?>">
                         </div>
+                        
                     </div>
+                    
+                    
                     <div class="form-group">
-                        <label for="numb_m2c" class="col-md-2 control-label">Metros cuadrados</label>
-                        <div class="col-md-2">
+                   
+                        <label for="numb_m2c" class="col-md-1 control-label">Mts<sup>2</sup>  </label>
+                        <div class="col-md-3">
                             <input type="number" name="numb_m2c" id="numb_m2c" placeholder="50" class="form-control" value="<?php echo (isset($inmueble)) ? $inmueble->inmu_m2c : '' ?>">
                         </div>
-                        <label for="numb_m2nc" class="col-md-2 control-label">Metros cuadrados completos</label>
-                        <div class="col-md-2">
+                      
+                        <label for="numb_m2nc" class="col-md-1 control-label">Mts<sup>2</sup> construidos</label>
+                        <div class="col-md-3">
                             <input type="number" name="numb_m2nc" id="numb_m2nc" placeholder="50" class="form-control" value="<?php echo (isset($inmueble)) ? $inmueble->inmu_m2nc : '' ?>">
                         </div>
-                        <label for="sele_estr" class="col-md-2 control-label">Estrato</label>
-                        <div class="col-md-2">
+                        <label for="sele_estr" class="col-md-1 control-label">Estrato</label>
+                        <div class="col-md-3">
                             <select name="sele_estr" id="sele_estr" class="form-control">
                                 <option value="1" <?php echo (isset($inmueble)  && $inmueble->inmu_estr == 1) ? 'selected' : '' ?>>1</option>
                                 <option value="2" <?php echo (isset($inmueble)  && $inmueble->inmu_estr == 2) ? 'selected' : '' ?>>2</option>
@@ -134,18 +131,48 @@
                             </label>
                         </div>
                     </div>
-                    <?php echo csrf_field(); ?>
-                    <div class="col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">Siguiente</button>
+                    
+                                        
+                    <div class="form-group">
+                        <label for="text_valo" class="col-md-2 control-label">Tipo</label>
+                        <div class="col-md-3">
+                            <label class="radio-inline">
+                                <input type="radio" name="radi_tipo" checked="true" value="Arriendo" <?php echo (isset($inmueble) && $inmueble->inmu_tine == 'Arriendo') ? 'checked=\'true\'' : '' ?>>Arriendo
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="radi_tipo" value="Venta" <?php echo (isset($inmueble) && $inmueble->inmu_tine == 'Venta') ? 'checked=\'true\'' : '' ?>>Venta
+                            </label>
+                        </div>
+                        <label for="text_valo" class="col-md-2 control-label">¿Para?</label>
+                        <div class="col-md-3">
+                            <label class="radio-inline">
+                                <input type="radio" name="radi_prop" checked="true" value="Oferta" <?php echo (isset($inmueble) && $inmueble->inmu_prop == 'Oferta') ? 'checked=\'true\'' : '' ?>>Oferta
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="radio" name="radi_prop" value="Demanda" <?php echo (isset($inmueble) && $inmueble->inmu_prop == 'Demanda') ? 'checked=\'true\'' : '' ?>> Demanda
+                            </label>
+                        </div>
                     </div>
+                    
+                    <?php echo csrf_field(); ?>
+                    
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-danger btn-fill btn-lg">Siguiente</button>
+                    </div><br/><br/><br/><br/><br/><br/>
+                
                 </form>
             </div>
+            
+            
             <div id="div_imag" class="row" style="display: none;">
+                
+                <h2>Selecciona las imágenes para el Inmueble</h2>
                 <form>
                     <input type="hidden" name="hidd_idin" id="hidd_idin" value="<?php echo (isset($inmueble)) ? $inmueble->inmu_iden : '0' ?>">
                     <input type="file" name="file_imag" id="filer_input" multiple="multiple">
 
-                    <a class="btn btn-primary" href="{{ url('inmueble/administrarinmuebles') }}">Publicar</a>
+                    <a class="btn btn-danger btn-fill" href="{{ url('inmueble/administrarinmuebles') }}">Publicar</a>
+                    <br/><br/><br/>
                 </form>
             </div>
         </div>
@@ -181,7 +208,7 @@
                 });
 
                 $('#filer_input').filer({
-                    changeInput: '<div class="jFiler-input-dragDrop "><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Arrastra las imagenes aquí</h3> <span style="display:inline-block; margin: 15px 0">o</span></div><a class="jFiler-input-choose-btn blue">Buscalas</a></div></div>',
+                    changeInput: '<div class="jFiler-input-dragDrop "><div class="jFiler-input-inner"><div class="jFiler-input-icon"><i class="icon-jfi-cloud-up-o"></i></div><div class="jFiler-input-text"><h3>Arrastra las imagenes aquí</h3> <span style="display:inline-block; margin: 15px 0">o</span></div><a class="jFiler-input-choose-btn btn btn-danger btn-fill">Buscalas</a></div></div>',
                     showThumbs: true,
                     theme: "dragdropbox",
                     templates: {
@@ -258,7 +285,7 @@
                             var jsonData = JSON.parse(data);
 
                             el.find(".jFiler-jProgressBar").fadeOut("slow", function(){
-                                $("<div class=\"jFiler-item-others text-success\"><i class=\"icon-jfi-check-circle\"></i> Success</div>").hide().appendTo(parent).fadeIn("slow");
+                                $("<div class=\"jFiler-item-others text-success\"><i class=\"icon-jfi-check-circle\"></i>Exitoso</div>").hide().appendTo(parent).fadeIn("slow");
                             });
 
                             $('.jFiler-item').each(function(){
